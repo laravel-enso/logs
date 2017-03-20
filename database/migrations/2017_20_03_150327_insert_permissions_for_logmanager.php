@@ -30,24 +30,24 @@ class InsertPermissionsForLogManager extends Migration
 
             $permissions = [
                 [
-                    'name' => 'system.logs.index',
+                    'name'        => 'system.logs.index',
                     'description' => 'Logs index',
-                    'type' => 0
+                    'type'        => 0,
                 ],
                 [
-                    'name' => 'system.logs.show',
+                    'name'        => 'system.logs.show',
                     'description' => 'Show Log',
-                    'type' => 0
+                    'type'        => 0,
                 ],
                 [
-                    'name' => 'system.logs.download',
+                    'name'        => 'system.logs.download',
                     'description' => 'Download Log',
-                    'type' => 0
+                    'type'        => 0,
                 ],
                 [
-                    'name' => 'system.logs.destroy',
+                    'name'        => 'system.logs.destroy',
                     'description' => 'Delete Log',
-                    'type' => 1
+                    'type'        => 1,
                 ],
             ];
 

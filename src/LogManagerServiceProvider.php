@@ -13,26 +13,26 @@ class LogManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/system/logManager', 'logmanager');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/system/logManager', 'logmanager');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->publishes([
-            __DIR__ . '/../config/logmanager.php' => config_path('logmanager.php'),
+            __DIR__.'/../config/logmanager.php' => config_path('logmanager.php'),
         ], 'logmanager-config');
 
         $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'logmanager-migration');
 
         $this->publishes([
-            __DIR__ . '/notifications' => app_path('notifications'),
+            __DIR__.'/notifications' => app_path('notifications'),
         ], 'logmanager-notification');
 
         $this->publishes([
-            __DIR__ . '/../resources' => base_path('resources'),
+            __DIR__.'/../resources' => base_path('resources'),
         ], 'logmanager-resources');
     }
 
