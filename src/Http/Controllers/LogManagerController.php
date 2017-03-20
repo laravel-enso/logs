@@ -7,21 +7,18 @@ use LaravelEnso\LogManager\LogReport;
 
 class LogManagerController extends Controller
 {
-
     public function index()
     {
         $files = \File::files(storage_path('logs'));
-        $logs  = [];
+        $logs = [];
 
         foreach ($files as $file) {
-
             if (substr($file, -4) == '.log') {
-
                 $logs[] = [
 
                     'path'             => $file,
                     'filename'         => last(explode('/', $file)),
-                    'fileSize'         => round((int) \File::size($file) / 1048576, 2) . ' MB',
+                    'fileSize'         => round((int) \File::size($file) / 1048576, 2).' MB',
                     'lastModifiedDate' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
                     'lastModifiedTime' => \Date::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
                 ];
@@ -43,12 +40,12 @@ class LogManagerController extends Controller
 
     public function show($filename)
     {
-        $file = storage_path('logs/' . $filename);
-        $log  = [
+        $file = storage_path('logs/'.$filename);
+        $log = [
 
             'path'         => $file,
             'filename'     => $filename,
-            'fileSize'     => round((int) \File::size($file) / 1048576, 2) . ' MB',
+            'fileSize'     => round((int) \File::size($file) / 1048576, 2).' MB',
             'lastModified' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y H:i:s'),
             'content'      => \File::get($file),
         ];
@@ -60,12 +57,12 @@ class LogManagerController extends Controller
     {
         $headers = ['Content-Type: application/log'];
 
-        return response()->download(storage_path('logs/' . $filename, $filename, $headers));
+        return response()->download(storage_path('logs/'.$filename, $filename, $headers));
     }
 
     public function destroy($log)
     {
-        $file = storage_path('logs/' . $log);
+        $file = storage_path('logs/'.$log);
 
         $log = LogReport::whereName($log)->first();
 
@@ -78,10 +75,10 @@ class LogManagerController extends Controller
 
             'path'             => $file,
             'filename'         => last(explode('/', $file)),
-            'fileSize'         => round((int) \File::size($file) / 1048576, 2) . ' MB',
+            'fileSize'         => round((int) \File::size($file) / 1048576, 2).' MB',
             'lastModifiedDate' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
             'lastModifiedTime' => \Date::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
-            'message'          => __("Operation was successfull"),
+            'message'          => __('Operation was successfull'),
         ];
 
         return $log;

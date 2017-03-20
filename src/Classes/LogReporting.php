@@ -66,12 +66,12 @@ class LogReporting
     {
         $log = substr($log, $this->laravelLog->size);
         $laravelLogErrors = collect();
-        $errorStartPos = strpos($log, env('APP_ENV') . '.ERROR');
+        $errorStartPos = strpos($log, env('APP_ENV').'.ERROR');
 
         while ($errorStartPos !== false) {
             $errorTimestamp = substr($log, $errorStartPos - 22, 22);
-            $errorEndPos = strpos($log, env('APP_ENV') . '.ERROR', $errorStartPos + 1) !== false ?
-                strpos($log, env('APP_ENV') . '.ERROR', $errorStartPos + 1) - 22
+            $errorEndPos = strpos($log, env('APP_ENV').'.ERROR', $errorStartPos + 1) !== false ?
+                strpos($log, env('APP_ENV').'.ERROR', $errorStartPos + 1) - 22
                 : false;
 
             $currentError = substr($log, $errorStartPos, $errorEndPos ? $errorEndPos - $errorStartPos : strlen($log));
