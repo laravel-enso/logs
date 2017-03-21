@@ -15,7 +15,7 @@ class LogManagerServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views/system/logManager', 'logmanager');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'logmanager');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -28,12 +28,12 @@ class LogManagerServiceProvider extends ServiceProvider
         ], 'logmanager-migration');
 
         $this->publishes([
-            __DIR__.'/notifications' => app_path('notifications'),
+            __DIR__.'/notifications' => app_path('notifications/vendor/laravel-enso'),
         ], 'logmanager-notification');
 
         $this->publishes([
-            __DIR__.'/../resources' => base_path('resources'),
-        ], 'logmanager-resources');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-enso/logmanager'),
+        ], 'logmanager-views');
     }
 
     /**
