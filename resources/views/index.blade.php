@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('pageTitle', __("Logs"))
 
 @section('content')
 
 	<section class="content-header">
-		@include('partials.breadcrumbs')
+		@include('core::partials.breadcrumbs')
 	</section>
 
 	<section class="content" v-cloak>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<modal :show="showModal" @cancel-action="showModal = false" @commit-action="deleteDocument">
-			@include('partials.modal')
+			@include('core::partials.modal')
 		</modal>
 	</section>
 

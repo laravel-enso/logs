@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('includesCss')
 
@@ -12,7 +12,7 @@
 @section('content')
 
 	<section class="content-header">
-		@include('partials.breadcrumbs')
+		@include('core::partials.breadcrumbs')
 	</section>
 
 	<section class="content">
