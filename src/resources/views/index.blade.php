@@ -1,11 +1,11 @@
-@extends('core::layouts.app')
+@extends('laravel-enso/core::layouts.app')
 
 @section('pageTitle', __("Logs"))
 
 @section('content')
 
 	<section class="content-header">
-		@include('core::partials.breadcrumbs')
+		@include('laravel-enso/core::partials.breadcrumbs')
 	</section>
 
 	<section class="content" v-cloak>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<modal :show="showModal" @cancel-action="showModal = false" @commit-action="deleteDocument">
-			@include('core::partials.modal')
+			@include('laravel-enso/core::partials.modal')
 		</modal>
 	</section>
 

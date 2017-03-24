@@ -13,27 +13,34 @@ class LogManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->publishesAll();
+        $this->loadDependencies();
+    }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'logmanager');
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
+    private function publishesAll()
+    {
         $this->publishes([
-            __DIR__.'/../config/logmanager.php' => config_path('logmanager.php'),
+            __DIR__.'/config/logmanager.php' => config_path('logmanager.php'),
         ], 'logmanager-config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__.'/database/migrations' => database_path('migrations'),
         ], 'logmanager-migration');
 
         $this->publishes([
-            __DIR__.'/notifications' => app_path('notifications/vendor/laravel-enso'),
+            __DIR__.'/app/notifications' => app_path('notifications/vendor/laravel-enso'),
         ], 'logmanager-notification');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-enso/logmanager'),
+            __DIR__.'/resources/views' => resource_path('views/vendor/laravel-enso/logmanager'),
         ], 'logmanager-views');
+    }
+
+    public function loadDependencies()
+    {
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'laravel-enso/logmanager');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
     /**

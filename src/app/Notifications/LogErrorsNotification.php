@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\LogManager\Notifications;
+namespace LaravelEnso\LogManager\App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;

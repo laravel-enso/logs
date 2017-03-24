@@ -1,9 +1,10 @@
 <?php
 
-namespace LaravelEnso\LogManager\Http\Controllers;
+namespace LaravelEnso\LogManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\LogManager\LogReport;
+use Carbon\Carbon;
+use LaravelEnso\LogManager\App\Models\LogReport;
 
 class LogManagerController extends Controller
 {
@@ -19,8 +20,8 @@ class LogManagerController extends Controller
                     'path'             => $file,
                     'filename'         => last(explode('/', $file)),
                     'fileSize'         => round((int) \File::size($file) / 1048576, 2).' MB',
-                    'lastModifiedDate' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
-                    'lastModifiedTime' => \Date::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
+                    'lastModifiedDate' => Carbon::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
+                    'lastModifiedTime' => Carbon::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
                 ];
             }
         }
@@ -35,7 +36,7 @@ class LogManagerController extends Controller
             'delete'   => request()->user()->hasAccessTo('system.logs.destroy') ?: false,
         ];
 
-        return view('logmanager::index', compact('logs', 'hasActionButtons'));
+        return view('laravel-enso/logmanager::index', compact('logs', 'hasActionButtons'));
     }
 
     public function show($filename)
@@ -46,11 +47,11 @@ class LogManagerController extends Controller
             'path'         => $file,
             'filename'     => $filename,
             'fileSize'     => round((int) \File::size($file) / 1048576, 2).' MB',
-            'lastModified' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y H:i:s'),
+            'lastModified' => Carbon::createFromTimestamp(\File::lastModified($file))->format('d-m-Y H:i:s'),
             'content'      => \File::get($file),
         ];
 
-        return view('logmanager::show', compact('log'));
+        return view('laravel-enso/logmanager::show', compact('log'));
     }
 
     public function download($filename)
@@ -76,8 +77,8 @@ class LogManagerController extends Controller
             'path'             => $file,
             'filename'         => last(explode('/', $file)),
             'fileSize'         => round((int) \File::size($file) / 1048576, 2).' MB',
-            'lastModifiedDate' => \Date::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
-            'lastModifiedTime' => \Date::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
+            'lastModifiedDate' => Carbon::createFromTimestamp(\File::lastModified($file))->format('d-m-Y'),
+            'lastModifiedTime' => Carbon::createFromTimestamp(\File::lastModified($file))->format('H:i:s'),
             'message'          => __('Operation was successfull'),
         ];
 

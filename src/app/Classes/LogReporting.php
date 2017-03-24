@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\LogManager\Classes;
+namespace LaravelEnso\LogManager\App\Classes;
 
-use App\User;
-use LaravelEnso\LogManager\LogReport;
-use LaravelEnso\LogManager\Notifications\LogErrorsNotification;
+use LaravelEnso\Core\App\Models\User;
+use LaravelEnso\LogManager\App\LogReport;
+use LaravelEnso\LogManager\App\Notifications\LogErrorsNotification;
 
 class LogReporting
 {

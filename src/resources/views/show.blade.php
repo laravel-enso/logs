@@ -1,4 +1,4 @@
-@extends('core::layouts.app')
+@extends('laravel-enso/core::layouts.app')
 
 @section('includesCss')
 
@@ -12,7 +12,7 @@
 @section('content')
 
 	<section class="content-header">
-		@include('core::partials.breadcrumbs')
+		@include('laravel-enso/core::partials.breadcrumbs')
 	</section>
 
 	<section class="content">
@@ -33,7 +33,7 @@
 					<div class="box-body">
 						<pre>
 							<code>
-	{{ $log['content'] }}
+{{ $log['content'] }}
 							</code>
 						</pre>
 					</div>

@@ -4,9 +4,10 @@ Library for LaravelEnso's logs management
 
 # Don't forget to
 
-php artisan vendor:publish --tag=logmanager-migrations
+php artisan vendor:publish --tag=logmanager-migration
 php artisan vendor:publish --tag=logmanager-config
-php artisan vendor:publish --tag=logmanager-resources
+php artisan vendor:publish --tag=logmanager-views
+php artisan vendor:publish --tag=logmanager-notification
 
 php artisan migrate
 

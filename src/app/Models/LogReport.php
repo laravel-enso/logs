@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\LogManager;
+namespace LaravelEnso\LogManager\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
