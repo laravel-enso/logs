@@ -28,7 +28,7 @@ class LogManagerServiceProvider extends ServiceProvider
         ], 'logmanager-migration');
 
         $this->publishes([
-            __DIR__.'/app/notifications' => app_path('notifications/vendor/laravel-enso'),
+            __DIR__.'/app/Notifications' => app_path('Notifications/vendor/laravel-enso'),
         ], 'logmanager-notification');
 
         $this->publishes([
