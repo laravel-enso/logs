@@ -1,4 +1,5 @@
 # Log Manager
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28c7bcb0b5d2451783990e0a151f0a44)](https://www.codacy.com/app/laravel-enso/LogManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/LogManager&amp;utm_campaign=Badge_Grade)
 
 Library for LaravelEnso's logs management
 
