@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\LogManager\App\Http\Controllers;
+namespace LaravelEnso\LogManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use LaravelEnso\LogManager\App\Models\LogReport;
+use LaravelEnso\LogManager\app\Models\LogReport;
 
 class LogManagerController extends Controller
 {
