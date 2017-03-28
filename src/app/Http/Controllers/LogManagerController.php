@@ -67,8 +67,10 @@ class LogManagerController extends Controller
 
         $log = LogReport::whereName($log)->first();
 
-        $log->size = 0;
-        $log->save();
+        if ($log) {
+            $log->size = 0;
+            $log->save();
+        }
 
         \File::put($file, '');
 
