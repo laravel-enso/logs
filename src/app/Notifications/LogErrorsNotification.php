@@ -45,7 +45,7 @@ class LogErrorsNotification extends Notification
     public function toMail($notifiable)
     {
         $mailMessage = (new MailMessage())
-            ->subject('Error Log from '.env('APP_NAME'))
+            ->subject('Error Log from '.config('app.name'))
             ->line($this->logErrors->count().' individual errors:');
 
         foreach ($this->logErrors as $logError) {
