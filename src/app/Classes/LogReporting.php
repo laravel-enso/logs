@@ -12,8 +12,8 @@ class LogReporting
 
     public function __construct()
     {
-        $logReport              = new LogReport();
-        $this->laravelLog       = $logReport->laravel_log;
+        $logReport = new LogReport();
+        $this->laravelLog = $logReport->laravel_log;
         $this->laravelLogErrors = $this->getLaravelLogErrors();
     }
 
@@ -35,11 +35,11 @@ class LogReporting
     public function getLaravelLogErrors()
     {
         $laravelLogErrors = collect();
-        $logFileSize      = \File::size(storage_path('logs/laravel.log'));
+        $logFileSize = \File::size(storage_path('logs/laravel.log'));
 
         if ($logFileSize > 8000000) {
             \File::put(storage_path('logs/laravel.log'), '');
-            $laravelLogErrors->push('Laravel.log file size exceeded limit and was cleaned...' . $logFileSize . 'bytes');
+            $laravelLogErrors->push('Laravel.log file size exceeded limit and was cleaned...'.$logFileSize.'bytes');
 
             $this->laravelLog->size = 0;
             $this->laravelLog->save();
@@ -63,14 +63,14 @@ class LogReporting
 
     private function extractErrorsFromLog($log)
     {
-        $log              = substr($log, $this->laravelLog->size);
+        $log = substr($log, $this->laravelLog->size);
         $laravelLogErrors = collect();
-        $errorStartPos    = strpos($log, env('APP_ENV') . '.ERROR');
+        $errorStartPos = strpos($log, env('APP_ENV').'.ERROR');
 
         while ($errorStartPos !== false) {
             $errorTimestamp = substr($log, $errorStartPos - 22, 22);
-            $errorEndPos    = strpos($log, env('APP_ENV') . '.ERROR', $errorStartPos + 1) !== false ?
-            strpos($log, env('APP_ENV') . '.ERROR', $errorStartPos + 1) - 22
+            $errorEndPos = strpos($log, env('APP_ENV').'.ERROR', $errorStartPos + 1) !== false ?
+            strpos($log, env('APP_ENV').'.ERROR', $errorStartPos + 1) - 22
             : false;
 
             $currentError = substr($log, $errorStartPos, $errorEndPos ? $errorEndPos - $errorStartPos : strlen($log));
@@ -80,7 +80,7 @@ class LogReporting
             });
 
             if (!$errorExists) {
-                $laravelLogErrors->push($errorTimestamp . $currentError);
+                $laravelLogErrors->push($errorTimestamp.$currentError);
             }
 
             $log = substr($log, $this->laravelLog->size);
