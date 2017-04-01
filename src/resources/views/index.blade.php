@@ -78,35 +78,35 @@
 
 	<script>
 
-		var vue = new Vue({
+		let vue = new Vue({
 			el: '#app',
 			data: {
-					showModal: false,
-					itemToBeDeleted: null,
-					dtHandle: null,
-					row: null
+				showModal: false,
+				itemToBeDeleted: null,
+				dtHandle: null,
+				row: null
 			},
 			methods: {
-					confirmDelete: function(index, filename) {
-							this.itemToBeDeleted = filename;
-							this.row = index;
-							this.showModal = true;
-					},
-					deleteDocument: function() {
-							axios.delete('/system/logs/' + this.itemToBeDeleted).then((response) => {
-									this.itemToBeDeleted = null;
-									this.showModal = false;
-									this.dtHandle.cell(this.row, 2).data(response.data.last_modified_date);
-									this.dtHandle.cell(this.row, 3).data(response.data.lastModifiedTime);
-									this.dtHandle.cell(this.row, 4).data(response.data.fileSize);
-									this.dtHandle.row(this.row).draw();
-									this.row = null;
-									toastr['success'](response.data.message);
-							});
-					},
+				confirmDelete: function(index, filename) {
+					this.itemToBeDeleted = filename;
+					this.row = index;
+					this.showModal = true;
+				},
+				deleteDocument: function() {
+					axios.delete('/system/logs/' + this.itemToBeDeleted).then((response) => {
+						this.itemToBeDeleted = null;
+						this.showModal = false;
+						this.dtHandle.cell(this.row, 2).data(response.data.last_modified_date);
+						this.dtHandle.cell(this.row, 3).data(response.data.lastModifiedTime);
+						this.dtHandle.cell(this.row, 4).data(response.data.fileSize);
+						this.dtHandle.row(this.row).draw();
+						this.row = null;
+						toastr['success'](response.data.message);
+					});
+				},
 			},
 			mounted: function() {
-					var options = { serverSide: false };
+					let options = { serverSide: false };
 					this.dtHandle = $('#logs').DataTable(options);
 			}
 		});

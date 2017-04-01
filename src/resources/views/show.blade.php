@@ -45,15 +45,16 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-<script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 
-	var vue = new Vue({
-			el: '#app'
-	});
+	<script>
 
-</script>
+		let vue = new Vue({
+				el: '#app'
+		});
+
+	</script>
 
 @endpush
