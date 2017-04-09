@@ -20,10 +20,6 @@ class LogManagerServiceProvider extends ServiceProvider
     private function publishesAll()
     {
         $this->publishes([
-            __DIR__.'/config/logmanager.php' => config_path('logmanager.php'),
-        ], 'logmanager-config');
-
-        $this->publishes([
             __DIR__.'/database/migrations' => database_path('migrations'),
         ], 'logmanager-migration');
 

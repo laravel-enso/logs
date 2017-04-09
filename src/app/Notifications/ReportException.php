@@ -3,24 +3,27 @@
 namespace LaravelEnso\LogManager\app\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Queue\InteractsWithQueue;
 
-class LogErrorsNotification extends Notification
+class ReportException extends Notification implements ShouldQueue
 {
-    use Queueable, InteractsWithQueue;
+    use Queueable;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public $logErrors;
+    private $mailMessage;
+    private $slackMessage;
 
-    public function __construct($logErrors)
+    public function __construct(\Exception $exception)
     {
-        $this->logErrors = $logErrors;
+        $this->mailMessage = $exception->__toString();
+        $this->slackMessage = $exception->getMessage() ?: 'Exception with no message';
     }
 
     /**
@@ -32,7 +35,7 @@ class LogErrorsNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'slack'];
     }
 
     /**
@@ -45,12 +48,9 @@ class LogErrorsNotification extends Notification
     public function toMail($notifiable)
     {
         $mailMessage = (new MailMessage())
-            ->subject('Error Log from '.config('app.name'))
-            ->line($this->logErrors->count().' individual errors:');
-
-        foreach ($this->logErrors as $logError) {
-            $mailMessage = $mailMessage->line($logError);
-        }
+            ->error()
+            ->subject('Error from '.config('app.name'))
+            ->line($this->mailMessage);
 
         return $mailMessage;
     }
@@ -67,5 +67,11 @@ class LogErrorsNotification extends Notification
         return [
             //
         ];
+    }
+
+    public function toSlack($notifiable)
+    {
+        return (new SlackMessage)
+            ->content($this->slackMessage);
     }
 }
