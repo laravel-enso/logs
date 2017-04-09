@@ -71,7 +71,7 @@ class ReportException extends Notification implements ShouldQueue
 
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)
+        return (new SlackMessage())
             ->content($this->slackMessage);
     }
 }
