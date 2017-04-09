@@ -16,7 +16,7 @@ class ErrorReporting
     public function report()
     {
         $users = $this->getNotifiableUsers();
-        \Log::info($users);
+
         foreach ($users as $user) {
             $user->notify(new ReportException($this->exception));
         }
