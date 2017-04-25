@@ -18,7 +18,7 @@ class ErrorReporting
         $users = $this->getNotifiableUsers();
 
         foreach ($users as $user) {
-            $user->notify(new ReportException($this->exception));
+            $user->notify(new ReportException($this->exception, request()->user()->id));
         }
     }
 

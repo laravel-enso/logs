@@ -20,11 +20,11 @@ class ReportException extends Notification implements ShouldQueue
     private $mailMessage;
     private $slackMessage;
 
-    public function __construct(\Exception $exception)
+    public function __construct(\Exception $exception, int $userId)
     {
         $this->mailMessage = $exception->__toString();
         $this->slackMessage = $exception->getMessage() ?:
-            'Exception with no message. Accessed path: ' . request()->path() . '. User: ' . request()->user()->id;
+            'Exception with no message. Accessed path: ' . request()->path() . '. User: ' . $userId;
     }
 
     /**
