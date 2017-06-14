@@ -1,10 +1,13 @@
 <?php
 
-Route::group(['namespace' => 'LaravelEnso\LogManager\app\Http\Controllers', 'middleware' => ['web', 'auth', 'core']], function () {
+Route::group([
+	'namespace' => 'LaravelEnso\LogManager\app\Http\Controllers',
+	'middleware' => ['web', 'auth', 'core']
+], function () {
     Route::group(['prefix' => 'system/logs', 'as' => 'system.logs.'], function () {
-        Route::get('', 'LogManagerController@index')->name('index');
-        Route::get('{log}', 'LogManagerController@show')->name('show');
-        Route::get('download/{log}', 'LogManagerController@download')->name('download');
-        Route::delete('{log}', 'LogManagerController@destroy')->name('destroy');
+        Route::get('', 'LogController@index')->name('index');
+        Route::get('{log}', 'LogController@show')->name('show');
+        Route::get('download/{log}', 'LogController@download')->name('download');
+        Route::delete('{log}', 'LogController@destroy')->name('destroy');
     });
 });

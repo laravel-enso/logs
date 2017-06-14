@@ -15,25 +15,24 @@
 		@include('laravel-enso/core::partials.breadcrumbs')
 	</section>
 
-	<section class="content">
+	<section class="content" v-cloak>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
 							<div class="box-title">
-									{{ __("Show Logs from") }} {{ $log['lastModified'] }} {{ $log['fileSize'] }}
+									{{ __("The log file") }} <code>@{{ log.name }}</code> {{ __("was last updated on") }} @{{ log.lastModified }}. {{ __("Current file size is") }} @{{ log.size }} {{ __("MB") }}
 							</div>
-							<div class="box-tools pull-right">
-									<button class="btn btn-box-tool btn-sm" data-widget="collapse">
-											<i class="fa fa-minus">
-											</i>
-									</button>
+							<div class="pull-right">
+								<span v-if="log.size">
+									@include('laravel-enso/logmanager::partials.actions')
+								</span>
 							</div>
 					</div>
 					<div class="box-body">
 						<pre>
-							<code>
-{{ $log['content'] }}
+							<code id="log-body">
+{{ $content }}
 							</code>
 						</pre>
 					</div>
@@ -51,8 +50,34 @@
 
 	<script>
 
-		let vue = new Vue({
-				el: '#app'
+		let vm = new Vue({
+			el: '#app',
+
+			data: {
+				showModal: false,
+				itemToBeDeleted: null,
+				log: JSON.parse('{!! $log !!}')
+			},
+
+			methods: {
+				empty() {
+					axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
+						this.modal = false;
+						this.log = response.data;
+						this.clearLog();
+						this.itemToBeDeleted = null;
+					}).catch(error => {
+						this.modal = false;
+
+						if (error.response.data.level) {
+							toastr[error.response.data.level](error.response.data.message);
+						}
+					});
+				},
+				clearLog() {
+					document.getElementById('log-body').innerHTML = "";
+				}
+			}
 		});
 
 	</script>

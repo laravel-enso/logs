@@ -1,30 +1,15 @@
 # Log Manager
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/28c7bcb0b5d2451783990e0a151f0a44)](https://www.codacy.com/app/laravel-enso/LogManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/LogManager&amp;utm_campaign=Badge_Grade)
+[![StyleCI](https://styleci.io/repos/85624363/shield?branch=master)](https://styleci.io/repos/85624363)
+[![Total Downloads](https://poser.pugx.org/laravel-enso/logmanager/downloads)](https://packagist.org/packages/laravel-enso/logmanager)
+[![Latest Stable Version](https://poser.pugx.org/laravel-enso/logmanager/version)](https://packagist.org/packages/laravel-enso/logmanager)
 
 Library for LaravelEnso's logs management
 
-# Don't forget to
+# Use
 
-php artisan vendor:publish --tag=logmanager-migration
-php artisan vendor:publish --tag=logmanager-config
-php artisan vendor:publish --tag=logmanager-views
-php artisan vendor:publish --tag=logmanager-notification
+If you need to customize the views run `php artisan vendor:publish --tag=logmanager-views`
 
-php artisan migrate
+### Contributions
 
-add the desired email list in config/logmanager.php file
-
-include the js assets in you app.js, then run gulp
-
-add the following to app/Console/Kernel.php schedule method in order to receive regular email notifications.
->>>
-$schedule->call(function () {
-
-    $logReporting = new LogReporting;
-    $logReporting->checkLaravelLog();
-})->everyTenMinutes();
->>>
-
-## Upgrade from laravel-enso v2
-
-Correct the includes
+...are welcome

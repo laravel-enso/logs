@@ -6,11 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class LogManagerServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->publishesAll();
@@ -19,14 +14,6 @@ class LogManagerServiceProvider extends ServiceProvider
 
     private function publishesAll()
     {
-        $this->publishes([
-            __DIR__.'/database/migrations' => database_path('migrations'),
-        ], 'logmanager-migration');
-
-        $this->publishes([
-            __DIR__.'/app/Notifications' => app_path('Notifications/vendor/laravel-enso'),
-        ], 'logmanager-notification');
-
         $this->publishes([
             __DIR__.'/resources/views' => resource_path('views/vendor/laravel-enso/logmanager'),
         ], 'logmanager-views');
@@ -39,11 +26,6 @@ class LogManagerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
     public function register()
     {
         //
