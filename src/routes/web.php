@@ -1,8 +1,8 @@
 <?php
 
 Route::group([
-	'namespace' => 'LaravelEnso\LogManager\app\Http\Controllers',
-	'middleware' => ['web', 'auth', 'core']
+    'namespace'  => 'LaravelEnso\LogManager\app\Http\Controllers',
+    'middleware' => ['web', 'auth', 'core'],
 ], function () {
     Route::group(['prefix' => 'system/logs', 'as' => 'system.logs.'], function () {
         Route::get('', 'LogController@index')->name('index');

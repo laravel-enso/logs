@@ -3,7 +3,6 @@
 namespace LaravelEnso\LogManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use LaravelEnso\LogManager\app\Http\Services\LogService;
 
 class LogController extends Controller
@@ -14,6 +13,7 @@ class LogController extends Controller
     {
         $this->logs = new LogService();
     }
+
     public function index()
     {
         return $this->logs->index();

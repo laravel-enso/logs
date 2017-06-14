@@ -22,7 +22,7 @@ class LogService
         $log = json_encode($this->getLogEntry($file));
         $size = $this->getFormattedSize(\File::size($file));
         if ($size > self::LogSizeLimit) {
-            flash()->warning(__("Log file exceeds limit of").': '.self::LogSizeLimit.' MB');
+            flash()->warning(__('Log file exceeds limit of').': '.self::LogSizeLimit.' MB');
 
             return back();
         }
@@ -79,11 +79,12 @@ class LogService
     {
         $lastModified = \File::lastModified($file);
         $size = $this->getFormattedSize(\File::size($file));
+
         return [
-            'path' => $file,
-            'name' => last(explode('/', $file)),
-            'size' => $size,
-            'canBeSeen' => $size <= self::LogSizeLimit,
+            'path'         => $file,
+            'name'         => last(explode('/', $file)),
+            'size'         => $size,
+            'canBeSeen'    => $size <= self::LogSizeLimit,
             'lastModified' => Carbon::createFromTimestamp($lastModified)->toDayDateTimeString(),
         ];
     }
