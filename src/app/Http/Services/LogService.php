@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\LogManager\app\Http\Services;
 
-use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class LogService
 {
@@ -79,13 +79,14 @@ class LogService
     {
         $lastModified = \File::lastModified($file);
         $size = $this->getFormattedSize(\File::size($file));
+        Date::setLocale(request()->user()->language);
 
         return [
             'path'         => $file,
             'name'         => last(explode('/', $file)),
             'size'         => $size,
             'canBeSeen'    => $size <= self::LogSizeLimit,
-            'lastModified' => Carbon::createFromTimestamp($lastModified)->toDayDateTimeString(),
+            'lastModified' => Date::createFromTimestamp($lastModified)->toDayDateTimeString(),
         ];
     }
 
