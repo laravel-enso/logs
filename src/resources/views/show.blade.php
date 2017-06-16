@@ -68,10 +68,7 @@
 						this.itemToBeDeleted = null;
 					}).catch(error => {
 						this.modal = false;
-
-						if (error.response.data.level) {
-							toastr[error.response.data.level](error.response.data.message);
-						}
+						this.reportEnsoException(error);
 					});
 				},
 				clearLog() {
