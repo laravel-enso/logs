@@ -9,10 +9,10 @@ class CreateStructureForLogManager extends StructureMigration
     ];
 
     protected $permissions = [
-        ['name' => 'system.logs.index', 'description' => 'Logs index', 'type' => 0],
-        ['name' => 'system.logs.show', 'description' => 'Show Log', 'type' => 0],
-        ['name' => 'system.logs.download', 'description' => 'Download Log', 'type' => 0],
-        ['name' => 'system.logs.destroy', 'description' => 'Delete Log', 'type' => 1],
+        ['name' => 'system.logs.index', 'description' => 'Logs index', 'type' => 0, 'default' => false],
+        ['name' => 'system.logs.show', 'description' => 'Show Log', 'type' => 0, 'default' => false],
+        ['name' => 'system.logs.download', 'description' => 'Download Log', 'type' => 0, 'default' => false],
+        ['name' => 'system.logs.destroy', 'description' => 'Delete Log', 'type' => 1, 'default' => false],
     ];
 
     protected $menu = [
