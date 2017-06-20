@@ -25,7 +25,7 @@
 							</div>
 							<div class="pull-right">
 								<span v-if="log.size">
-									@include('laravel-enso/logmanager::partials.actions')
+									@include('laravel-enso/logmanager::actions')
 								</span>
 							</div>
 					</div>

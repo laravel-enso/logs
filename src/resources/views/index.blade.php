@@ -18,7 +18,7 @@
 			              <h3 class="box-title">@{{ log.name }}</h3>
 			              <div class="pull-right">
 								<span v-if="log.size">
-									@include('laravel-enso/logmanager::partials.actions')
+									@include('laravel-enso/logmanager::actions')
 								</span>
 							</div>
 			            </div>

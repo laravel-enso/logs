@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/logmanager",
-    "description": "Library for Laravel Enso logs management",
+    "description": "Depedency for Laravel Enso logs management",
     "type": "depedency",
     "license": "MIT",
     "authors": [

@@ -4,11 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/logmanager/downloads)](https://packagist.org/packages/laravel-enso/logmanager)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/logmanager/version)](https://packagist.org/packages/laravel-enso/logmanager)
 
-Library for LaravelEnso's logs management
-
-# Use
-
-If you need to customize the views run `php artisan vendor:publish --tag=logmanager-views`
+Depedency for Laravel Enso logs management
 
 ### Contributions
 
