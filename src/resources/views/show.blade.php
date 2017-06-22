@@ -1,6 +1,6 @@
 @extends('laravel-enso/core::layouts.app')
 
-@section('includesCss')
+@section('css')
 
 	<!-- highlight.js monokai -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/monokai-sublime.min.css"/>
