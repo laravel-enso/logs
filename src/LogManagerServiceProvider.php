@@ -15,6 +15,6 @@ class LogManagerServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->app->register('Jenssegers\Date\DateServiceProvider');
     }
 }
