@@ -68,10 +68,10 @@ class LogService
     private function getActionButtons()
     {
         return collect([
-            'show'     => request()->user()->hasAccessTo('system.logs.show') ?: false,
-            'edit'     => request()->user()->hasAccessTo('system.logs.edit') ?: false,
-            'download' => request()->user()->hasAccessTo('system.logs.download') ?: false,
-            'delete'   => request()->user()->hasAccessTo('system.logs.destroy') ?: false,
+            'show'     => request()->user()->can('access-route', 'system.logs.show') ?: false,
+            'edit'     => request()->user()->can('access-route', 'system.logs.edit') ?: false,
+            'download' => request()->user()->can('access-route', 'system.logs.download') ?: false,
+            'delete'   => request()->user()->can('access-route', 'system.logs.destroy') ?: false,
         ]);
     }
 
