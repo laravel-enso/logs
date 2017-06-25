@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\LogManager;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class LogsServiceProvider extends ServiceProvider
