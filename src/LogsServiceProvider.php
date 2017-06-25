@@ -16,5 +16,8 @@ class LogsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register('Jenssegers\Date\DateServiceProvider');
+
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Date', 'Jenssegers\Date\Date');
     }
 }
