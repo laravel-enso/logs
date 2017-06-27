@@ -4,8 +4,12 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/logmanager/downloads)](https://packagist.org/packages/laravel-enso/logmanager)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/logmanager/version)](https://packagist.org/packages/laravel-enso/logmanager)
 
-Dependency for [Laravel Enso](https://github.com/laravel-enso/Enso) log management
+Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso) 
+
+### Notes
+
+The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
 
 ### Contributions
 
-...are welcome
+are welcome
