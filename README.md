@@ -4,7 +4,11 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/logmanager/downloads)](https://packagist.org/packages/laravel-enso/logmanager)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/logmanager/version)](https://packagist.org/packages/laravel-enso/logmanager)
 
-Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso) 
+Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
+
+### Details
+
+Permits viewing, downloading and clearing the logs inside the `logs` folder for the application
 
 ### Notes
 
