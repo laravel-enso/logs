@@ -50,12 +50,12 @@
 			methods: {
 				empty() {
 					axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
-						this.modal = false;
+						this.showModal = false;
 						let index = this.logs.indexOf(this.itemToBeDeleted);
 						this.logs.splice(index, 1, response.data);
 						this.itemToBeDeleted = null;
 					}).catch(error => {
-						this.modal = false;
+						this.showModal = false;
 						this.reportEnsoException(error);
 					});
 				}

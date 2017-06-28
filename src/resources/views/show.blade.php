@@ -24,9 +24,7 @@
 									{{ __("The log file") }} <code>@{{ log.name }}</code> {{ __("was last updated on") }} @{{ log.lastModified }}. {{ __("Current file size is") }} @{{ log.size }} {{ __("MB") }}
 							</div>
 							<div class="pull-right">
-								<span v-if="log.size">
-									@include('laravel-enso/logmanager::actions')
-								</span>
+								@include('laravel-enso/logmanager::actions')
 							</div>
 					</div>
 					<div class="box-body">
@@ -62,12 +60,12 @@
 			methods: {
 				empty() {
 					axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
-						this.modal = false;
+						this.showModal = false;
 						this.log = response.data;
 						this.clearLog();
 						this.itemToBeDeleted = null;
 					}).catch(error => {
-						this.modal = false;
+						this.showModal = false;
 						this.reportEnsoException(error);
 					});
 				},
