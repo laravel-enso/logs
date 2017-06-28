@@ -14,12 +14,10 @@
 				<div v-for="log in logs" class="col-md-4">
 					<div class="box box-solid">
 			            <div class="box-header with-border">
-			              <i class="fa fa-terminal"></i>
-			              <h3 class="box-title">@{{ log.name }}</h3>
-			              <div class="pull-right">
-								<span v-if="log.size">
-									@include('laravel-enso/logmanager::actions')
-								</span>
+			              	<i class="fa fa-terminal"></i>
+			              	<h3 class="box-title">@{{ log.name }}</h3>
+			              	<div class="pull-right">
+								@include('laravel-enso/logmanager::actions')
 							</div>
 			            </div>
 			            <div class="box-body">
