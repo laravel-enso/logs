@@ -6,6 +6,10 @@
 
 Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
+![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_004.png)
+
+![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_005.png)
+
 ### Details
 
 Permits viewing, downloading and clearing the logs inside the `logs` folder for the application
