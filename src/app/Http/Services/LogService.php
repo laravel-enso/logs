@@ -79,7 +79,6 @@ class LogService
     {
         $lastModified = \File::lastModified($file);
         $size = $this->getFormattedSize(\File::size($file));
-        Date::setLocale(request()->user()->language);
 
         return [
             'path'         => $file,
