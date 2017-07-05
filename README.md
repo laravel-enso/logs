@@ -13,7 +13,9 @@ Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Ens
 
 ### Details
 
-Permits viewing, downloading and clearing the logs inside the `logs` folder for the application
+Permits viewing, downloading and clearing the logs for the application
+- shows all log files inside the `logs` folder
+- can display in-page the contents of the log file, up to certain file size limit, to avoid locking up the browser
 
 ### Notes
 
