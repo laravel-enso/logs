@@ -1,4 +1,4 @@
-<!--h--> 
+<!--h-->
 # Log Manager
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/28c7bcb0b5d2451783990e0a151f0a44)](https://www.codacy.com/app/laravel-enso/LogManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/LogManager&amp;utm_campaign=Badge_Grade)
@@ -10,9 +10,9 @@
 
 Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
-![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_004.png)
+[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_004_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/Selection_004.png)
 
-![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_005.png)
+[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_005_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/Selection_005.png)
 
 ### Features
 
