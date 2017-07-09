@@ -54,7 +54,7 @@
 			data: {
 				showModal: false,
 				itemToBeDeleted: null,
-				log: JSON.parse('{!! $log !!}')
+				log: {!! $log !!}
 			},
 
 			methods: {
@@ -62,14 +62,14 @@
 					axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
 						this.showModal = false;
 						this.log = response.data;
-						this.clearLog();
+						this.emptyHtml();
 						this.itemToBeDeleted = null;
 					}).catch(error => {
 						this.showModal = false;
 						this.reportEnsoException(error);
 					});
 				},
-				clearLog() {
+				emptyHtml() {
 					document.getElementById('log-body').innerHTML = "";
 				}
 			}
