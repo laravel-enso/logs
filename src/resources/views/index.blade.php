@@ -11,7 +11,7 @@
 	<section class="content" v-cloak>
 		<div class="row">
 			<div class="col-md-12">
-				<div v-for="log in logs" class="col-md-4">
+				<div v-for="log in logs" class="col-md-6 col-lg-4">
 					<div class="box box-solid">
 			            <div class="box-header with-border">
 			              	<i class="fa fa-terminal"></i>
