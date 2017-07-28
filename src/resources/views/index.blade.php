@@ -52,11 +52,13 @@
 					axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
 						this.showModal = false;
 
-						let log = this.logs.find(log => {
+						let index = this.logs.findIndex(log => {
 							return this.itemToBeDeleted == log.name;
 						});
 
-						this.logs.splice(this.logs.indexOf(log), 1, response.data);
+						console.log(index);
+
+						this.logs.splice(index, 1, response.data);
 						this.itemToBeDeleted = null;
 					}).catch(error => {
 						this.showModal = false;
