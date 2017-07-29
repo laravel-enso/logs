@@ -17,5 +17,4 @@
 	</button>
 @endif
 <modal :show="showModal" @cancel-action="showModal=false;itemToBeDeleted=null" @commit-action="empty()">
-	@include('laravel-enso/core::partials.modal')
 </modal>
