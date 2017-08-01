@@ -55,11 +55,9 @@ class LogService
         $files = \File::files(storage_path('logs'));
 
         foreach ($files as $file) {
-            if (substr($file, -4) !== '.log') {
-                continue;
+            if (substr($file, -4) === '.log') {
+                $logs->push($this->getLogEntry($file));
             }
-
-            $logs->push($this->getLogEntry($file));
         }
 
         return $logs;
