@@ -16,5 +16,7 @@
 		<i class="fa fa-trash-o"></i>
 	</button>
 @endif
-<modal :show="showModal" @cancel-action="showModal=false;itemToBeDeleted=null" @commit-action="empty()">
+<modal :show="showModal"
+	@cancel-action="showModal=false;itemToBeDeleted=null"
+	@commit-action="empty()">
 </modal>

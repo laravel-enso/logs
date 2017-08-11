@@ -11,33 +11,27 @@
 
 @section('content')
 
-	<section class="content-header">
-		@include('laravel-enso/menumanager::breadcrumbs')
-	</section>
-
-	<section class="content" v-cloak>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-							<div class="box-title">
-									{{ __("The log file") }} <code>@{{ log.name }}</code> {{ __("was last updated on") }} @{{ log.lastModified }}. {{ __("Current file size is") }} @{{ log.size }} {{ __("MB") }}
-							</div>
-							<div class="pull-right">
-								@include('laravel-enso/logmanager::actions')
-							</div>
-					</div>
-					<div class="box-body">
-						<pre>
-							<code id="log-body">
+	<page v-cloak>
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<div class="box-header with-border">
+						<div class="box-title">
+								{{ __("The log file") }} <code>@{{ log.name }}</code> {{ __("was last updated on") }} @{{ log.lastModified }}. {{ __("Current file size is") }} @{{ log.size }} {{ __("MB") }}
+						</div>
+						<div class="pull-right">
+							@include('laravel-enso/logmanager::actions')
+						</div>
+				</div>
+				<div class="box-body">
+					<pre>
+						<code id="log-body">
 {{ $content }}
-							</code>
-						</pre>
-					</div>
+						</code>
+					</pre>
 				</div>
 			</div>
 		</div>
-	</section>
+	</page>
 
 @endsection
 
