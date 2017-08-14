@@ -31,7 +31,7 @@ class LogManagerTest extends TestHelper
             ->assertViewIs('laravel-enso/logmanager::index')
             ->assertVIewHas(['logs']);
 
-            $this->cleanUp();
+        $this->cleanUp();
     }
 
     /** @test */
@@ -92,5 +92,4 @@ class LogManagerTest extends TestHelper
     {
         $this->delete('/system/logs/'.$this->log);
     }
-
 }
