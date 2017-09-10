@@ -89,6 +89,6 @@ class LogService
 
     private function getFormattedSize($size)
     {
-        return round($size / 1048576, 2);
+        return round($size / 1048576, 3);
     }
 }

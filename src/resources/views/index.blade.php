@@ -6,25 +6,22 @@
 
 	<page v-cloak>
 		<div class="col-md-12">
-			<div v-for="log in logs" class="col-md-6 col-lg-4">
-				<div class="box box-solid">
-		            <div class="box-header with-border">
-		              	<i class="fa fa-terminal"></i>
-		              	<h3 class="box-title">@{{ log.name }}</h3>
-		              	<div class="pull-right">
-							@include('laravel-enso/logmanager::actions')
-						</div>
-		            </div>
-		            <div class="box-body">
-		              <dl class="dl-horizontal">
-		                <dt>{{ __("Last updated") }}</dt>
-		                <dd>@{{ log.lastModified }}</dd>
-		                <dt>{{ __("Size") }}</dt>
-		                <dd>@{{ log.size }} {{ __("MB") }}</dd>
-		              </dl>
-		            </div>
-		          </div>
-			</div>
+			<div v-for="log in logs" class="col-md-6 col-lg-6">
+				<box :theme="log.size ? 'danger' : 'success'"
+                    icon="fa fa-terminal"
+                    :title="log.name"
+                    border open>
+                    <span slot="btn-box-tool">
+                        @include('laravel-enso/logmanager::actions')
+                    </span>
+	              	<dl class="dl-horizontal">
+	                	<dt>{{ __("Last updated") }}</dt>
+	                	<dd>@{{ log.lastModified }}</dd>
+	                	<dt>{{ __("Size") }}</dt>
+	                	<dd>@{{ log.size }} {{ __("MB") }}</dd>
+	              	</dl>
+             	</box>
+		    </div>
 		</div>
 	</page>
 
