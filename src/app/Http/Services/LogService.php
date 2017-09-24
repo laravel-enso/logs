@@ -10,27 +10,22 @@ class LogService
 
     public function index()
     {
-        $logs = $this->getLogs();
-        $actionButtons = $this->getActionButtons();
-
-        return view('laravel-enso/logmanager::index', compact('logs', 'actionButtons'));
+        return [ 'logs' => $this->getLogs() ];
     }
 
     public function show($fileName)
     {
         $file = storage_path('logs/'.$fileName);
-        $log = json_encode($this->getLogEntry($file));
+        $log = $this->getLog($file);
         $size = $this->getFormattedSize(\File::size($file));
-        if ($size > self::LogSizeLimit) {
-            flash()->warning(__('Log file exceeds limit of').': '.self::LogSizeLimit.' MB');
 
-            return back();
+        if ($size > self::LogSizeLimit) {
+            throw new \EnsoException(__('Log file exceeds limit of').': '.self::LogSizeLimit.' MB');
         }
 
         $content = \File::get($file);
-        $actionButtons = $this->getActionButtons();
 
-        return view('laravel-enso/logmanager::show', compact('log', 'content', 'actionButtons'));
+        return compact('log', 'content');
     }
 
     public function download($fileName)
@@ -44,9 +39,9 @@ class LogService
     {
         $file = storage_path('logs/'.$log);
         \File::put($file, '');
-        $log = $this->getLogEntry($file);
+        $log = $this->getLog($file);
 
-        return $log;
+        return ['log' => $log, 'message' => __("The log was cleaned")];
     }
 
     private function getLogs()
@@ -56,26 +51,16 @@ class LogService
 
         foreach ($files as $file) {
             if (substr($file, -4) === '.log') {
-                $logs->push($this->getLogEntry($file));
+                $logs->push($this->getLog($file));
             }
         }
 
         return $logs;
     }
 
-    private function getActionButtons()
+    private function getLog($file)
     {
-        return collect([
-            'show'     => request()->user()->can('access-route', 'system.logs.show') ?: false,
-            'edit'     => request()->user()->can('access-route', 'system.logs.edit') ?: false,
-            'download' => request()->user()->can('access-route', 'system.logs.download') ?: false,
-            'delete'   => request()->user()->can('access-route', 'system.logs.destroy') ?: false,
-        ]);
-    }
-
-    private function getLogEntry($file)
-    {
-        $lastModified = \File::lastModified($file);
+        $modified = \File::lastModified($file);
         $size = $this->getFormattedSize(\File::size($file));
 
         return [
@@ -83,7 +68,7 @@ class LogService
             'name'         => last(explode('/', $file)),
             'size'         => $size,
             'canBeSeen'    => $size <= self::LogSizeLimit,
-            'lastModified' => Date::createFromTimestamp($lastModified)->toDayDateTimeString(),
+            'modified' => Date::createFromTimestamp($modified)->toDayDateTimeString(),
         ];
     }
 

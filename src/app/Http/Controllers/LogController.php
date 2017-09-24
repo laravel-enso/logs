@@ -7,30 +7,30 @@ use LaravelEnso\LogManager\app\Http\Services\LogService;
 
 class LogController extends Controller
 {
-    private $logs;
+    private $service;
 
-    public function __construct()
+    public function __construct(LogService $service)
     {
-        $this->logs = new LogService();
+        $this->service = $service;
     }
 
     public function index()
     {
-        return $this->logs->index();
+        return $this->service->index();
     }
 
     public function show(string $fileName)
     {
-        return $this->logs->show($fileName);
+        return $this->service->show($fileName);
     }
 
     public function download($fileName)
     {
-        return $this->logs->download($fileName);
+        return $this->service->download($fileName);
     }
 
     public function destroy($fileName)
     {
-        return $this->logs->empty($fileName);
+        return $this->service->empty($fileName);
     }
 }

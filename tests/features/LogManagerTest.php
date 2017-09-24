@@ -28,8 +28,7 @@ class LogManagerTest extends TestHelper
 
         $this->get('/system/logs')
             ->assertStatus(200)
-            ->assertViewIs('laravel-enso/logmanager::index')
-            ->assertVIewHas(['logs']);
+            ->assertJsonStructure(['logs']);
 
         $this->cleanUp();
     }
@@ -40,8 +39,7 @@ class LogManagerTest extends TestHelper
         $this->addLogEntry();
 
         $this->get('/system/logs/'.$this->log)->assertStatus(200)
-            ->assertViewIs('laravel-enso/logmanager::show')
-            ->assertVIewHas(['log']);
+            ->assertJsonStructure(['log']);
 
         $this->cleanUp();
     }
