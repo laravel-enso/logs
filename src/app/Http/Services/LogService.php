@@ -10,7 +10,7 @@ class LogService
 
     public function index()
     {
-        return [ 'logs' => $this->getLogs() ];
+        return ['logs' => $this->getLogs()];
     }
 
     public function show($fileName)
@@ -41,7 +41,7 @@ class LogService
         \File::put($file, '');
         $log = $this->getLog($file);
 
-        return ['log' => $log, 'message' => __("The log was cleaned")];
+        return ['log' => $log, 'message' => __('The log was cleaned')];
     }
 
     private function getLogs()
@@ -68,7 +68,7 @@ class LogService
             'name'         => last(explode('/', $file)),
             'size'         => $size,
             'canBeSeen'    => $size <= self::LogSizeLimit,
-            'modified' => Date::createFromTimestamp($modified)->toDayDateTimeString(),
+            'modified'     => Date::createFromTimestamp($modified)->toDayDateTimeString(),
         ];
     }
 
