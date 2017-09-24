@@ -49,9 +49,9 @@ class LogManagerTest extends TestHelper
     {
         \Log::info($this->faker->words(30000));
 
-        $this->get('/system/logs/'.$this->log)
-            ->assertSessionHas('flash_notification')
-            ->assertStatus(302);
+        $this->get(route('system.logs.show', $this->log, false))
+            ->assertJsonStructure(['message'])
+            ->assertStatus(400);
 
         $this->cleanUp();
     }
@@ -61,7 +61,7 @@ class LogManagerTest extends TestHelper
     {
         $this->addLogEntry();
 
-        $response = $this->get('/system/logs/download/'.$this->log)
+        $response = $this->get(route('system.logs.download', $this->log, false))
             ->assertStatus(200);
 
         $this->assertEquals(storage_path('logs/'.$this->log),
@@ -75,7 +75,7 @@ class LogManagerTest extends TestHelper
     {
         $this->addLogEntry();
 
-        $this->delete('/system/logs/'.$this->log)
+        $this->delete(route('system.logs.destroy', $this->log, false))
             ->assertStatus(200);
 
         $this->assertEquals('', \File::get(storage_path('logs/'.$this->log)));
