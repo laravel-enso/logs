@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\LogManagerServiceProvider"
+                "LaravelEnso\\LogManager\\LogManagerServiceProvider"
             ],
             "aliases": {}
         }
