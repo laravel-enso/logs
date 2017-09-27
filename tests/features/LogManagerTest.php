@@ -6,7 +6,6 @@ use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelEnso\TestHelper\app\Traits\SignIn;
-use Tests\TestCase;
 
 class LogManagerTest extends TestCase
 {
@@ -18,7 +17,7 @@ class LogManagerTest extends TestCase
 
         // $this->disableExceptionHandling();
         $this->faker = Factory::create();
-        $this->log   = 'laravel.log';
+        $this->log = 'laravel.log';
         $this->signIn(User::first());
     }
 
@@ -39,7 +38,7 @@ class LogManagerTest extends TestCase
     {
         $this->addLogEntry();
 
-        $this->get('/system/logs/' . $this->log)->assertStatus(200)
+        $this->get('/system/logs/'.$this->log)->assertStatus(200)
             ->assertJsonStructure(['log']);
 
         $this->cleanUp();
@@ -65,20 +64,21 @@ class LogManagerTest extends TestCase
         $response = $this->get(route('system.logs.download', $this->log, false))
             ->assertStatus(200);
 
-        $this->assertEquals(storage_path('logs/' . $this->log),
+        $this->assertEquals(storage_path('logs/'.$this->log),
             $response->getFile()->getRealPath());
 
         $this->cleanUp();
     }
 
     /** @test */
-    function empty() {
+    public function empty()
+    {
         $this->addLogEntry();
 
         $this->delete(route('system.logs.destroy', $this->log, false))
             ->assertStatus(200);
 
-        $this->assertEquals('', \File::get(storage_path('logs/' . $this->log)));
+        $this->assertEquals('', \File::get(storage_path('logs/'.$this->log)));
     }
 
     private function addLogEntry()
@@ -88,6 +88,6 @@ class LogManagerTest extends TestCase
 
     private function cleanUp()
     {
-        $this->delete('/system/logs/' . $this->log);
+        $this->delete('/system/logs/'.$this->log);
     }
 }
