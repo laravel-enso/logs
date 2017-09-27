@@ -4,12 +4,13 @@ namespace Tests;
 
 use App\User;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use LaravelEnso\TestHelper\app\Classes\TestHelper;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use LaravelEnso\TestHelper\app\Traits\SignIn;
+use Tests\TestCase;
 
-class LogManagerTest extends TestHelper
+class LogManagerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase, SignIn;
 
     protected function setUp()
     {
@@ -17,7 +18,7 @@ class LogManagerTest extends TestHelper
 
         // $this->disableExceptionHandling();
         $this->faker = Factory::create();
-        $this->log = 'laravel.log';
+        $this->log   = 'laravel.log';
         $this->signIn(User::first());
     }
 
@@ -38,7 +39,7 @@ class LogManagerTest extends TestHelper
     {
         $this->addLogEntry();
 
-        $this->get('/system/logs/'.$this->log)->assertStatus(200)
+        $this->get('/system/logs/' . $this->log)->assertStatus(200)
             ->assertJsonStructure(['log']);
 
         $this->cleanUp();
@@ -51,7 +52,7 @@ class LogManagerTest extends TestHelper
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertJsonStructure(['message'])
-            ->assertStatus(400);
+            ->assertStatus(455);
 
         $this->cleanUp();
     }
@@ -64,21 +65,20 @@ class LogManagerTest extends TestHelper
         $response = $this->get(route('system.logs.download', $this->log, false))
             ->assertStatus(200);
 
-        $this->assertEquals(storage_path('logs/'.$this->log),
+        $this->assertEquals(storage_path('logs/' . $this->log),
             $response->getFile()->getRealPath());
 
         $this->cleanUp();
     }
 
     /** @test */
-    public function empty()
-    {
+    function empty() {
         $this->addLogEntry();
 
         $this->delete(route('system.logs.destroy', $this->log, false))
             ->assertStatus(200);
 
-        $this->assertEquals('', \File::get(storage_path('logs/'.$this->log)));
+        $this->assertEquals('', \File::get(storage_path('logs/' . $this->log)));
     }
 
     private function addLogEntry()
@@ -88,6 +88,6 @@ class LogManagerTest extends TestHelper
 
     private function cleanUp()
     {
-        $this->delete('/system/logs/'.$this->log);
+        $this->delete('/system/logs/' . $this->log);
     }
 }

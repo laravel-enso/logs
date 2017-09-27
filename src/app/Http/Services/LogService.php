@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\LogManager\app\Http\Services;
 
-use Jenssegers\Date\Date;
+use Carbon\Carbon;
 
 class LogService
 {
@@ -68,7 +68,7 @@ class LogService
             'name'         => last(explode('/', $file)),
             'size'         => $size,
             'canBeSeen'    => $size <= self::LogSizeLimit,
-            'modified'     => Date::createFromTimestamp($modified)->toDayDateTimeString(),
+            'modified'     => Carbon::createFromTimestamp($modified),
         ];
     }
 
