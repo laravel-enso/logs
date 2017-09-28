@@ -29,7 +29,7 @@
                 <div class="has-padding-large">
                     <p>
                         <span>{{ __("Last updated") }}</span>
-                        <span class="is-pulled-right">{{ log.modified }}</span>
+                        <span class="is-pulled-right">{{ log.modified.date | timeFromNow }}</span>
                     </p>
                     <p>
                         <span>{{ __("Size") }}</span>
@@ -77,7 +77,7 @@
 
         methods: {
             empty() {
-                axios.delete('/system/logs/' + this.itemToBeDeleted).then(response => {
+                axios.delete(route('system.logs.destroy', this.itemToBeDeleted, false).toString()).then(response => {
                     this.showModal = false;
                     let index = this.logs.findIndex(log => this.itemToBeDeleted === log.name);
                     this.logs.splice(index, 1, response.data.log);
@@ -89,7 +89,7 @@
                 });
             },
             getDownloadLink(log) {
-                return '/' + route('system.logs.download', log, false);
+                return route('system.logs.download', log, false).toString();
             }
         }
     }
