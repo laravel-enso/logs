@@ -1,7 +1,7 @@
 <?php
 
 Route::middleware(['auth:api', 'api', 'core'])
-	->prefix('api')
+    ->prefix('api')
     ->namespace('LaravelEnso\LogManager\app\Http\Controllers')
     ->prefix('system')->as('system.')
     ->group(function () {
