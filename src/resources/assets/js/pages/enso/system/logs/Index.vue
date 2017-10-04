@@ -70,8 +70,6 @@
         created() {
             axios.get(this.$route.path).then(response => {
                 this.logs = response.data.logs;
-            }).catch(error => {
-                this.handleError(error);
             });
         },
 
@@ -85,7 +83,6 @@
                     toastr.success(response.data.message);
                 }).catch(error => {
                     this.showModal = false;
-                    this.handleError(error);
                 });
             },
             getDownloadLink(log) {
