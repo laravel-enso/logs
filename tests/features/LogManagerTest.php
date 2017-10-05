@@ -26,7 +26,7 @@ class LogManagerTest extends TestCase
     {
         $this->addLogEntry();
 
-        $this->get('/system/logs')
+        $this->get(route('system.logs.index', [], false))
             ->assertStatus(200)
             ->assertJsonStructure(['logs']);
 
@@ -38,7 +38,8 @@ class LogManagerTest extends TestCase
     {
         $this->addLogEntry();
 
-        $this->get('/system/logs/'.$this->log)->assertStatus(200)
+        $this->get(route('system.logs.show', $this->log, false))
+            ->assertStatus(200)
             ->assertJsonStructure(['log']);
 
         $this->cleanUp();
@@ -88,6 +89,6 @@ class LogManagerTest extends TestCase
 
     private function cleanUp()
     {
-        $this->delete('/system/logs/'.$this->log);
+        $this->delete(route('system.logs.destroy', $this->log, false));
     }
 }
