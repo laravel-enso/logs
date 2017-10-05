@@ -1,6 +1,6 @@
 export const Show = {
     name: 'system.logs.show',
-    path: ':log',
+    path: ':id',
     component: require('../../../../pages/enso/system/logs/Show.vue'),
     meta: {
         breadcrumb: 'show',

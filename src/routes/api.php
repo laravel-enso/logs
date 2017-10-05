@@ -1,9 +1,8 @@
 <?php
 
-Route::middleware(['auth:api', 'api', 'core'])
-    ->prefix('api')
+Route::middleware(['web', 'auth', 'core'])
+    ->prefix('api/system')->as('system.')
     ->namespace('LaravelEnso\LogManager\app\Http\Controllers')
-    ->prefix('system')->as('system.')
     ->group(function () {
         Route::get('logs/download/{log}', 'LogController@download')
             ->name('logs.download');

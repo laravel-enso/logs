@@ -10,7 +10,7 @@
                 <a slot="control-1" class="card-header-icon"
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
-                        @click="$router.push({ name: 'system.logs.show', params: { log: log.name } })">
+                        @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
                         <i class="fa fa-eye"></i>
                     </span>
                 </a>
@@ -68,7 +68,7 @@
         },
 
         created() {
-            axios.get(this.$route.path).then(response => {
+            axios.get(route('system.logs.index', [], false)).then(response => {
                 this.logs = response.data.logs;
             });
         },
