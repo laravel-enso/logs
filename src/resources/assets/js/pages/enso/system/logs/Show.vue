@@ -2,7 +2,7 @@
 
 	<article class="message">
 	  	<div class="message-header">
-	    	<p>{{ __("The log file") }} <code>{{ log.name }}</code> {{ __("was last updated on") }} {{ log.modified }}. {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}</p>
+	    	<p>{{ __("The log file") }} <code>{{ log.name }}</code> {{ __("was last updated") }} {{ log.modified.date | timeFromNow }}. {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}</p>
 	    	<button class="delete" aria-label="delete"></button>
 	  	</div>
 	  	<div class="message-body">
