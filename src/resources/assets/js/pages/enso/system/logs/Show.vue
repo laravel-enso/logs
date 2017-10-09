@@ -36,7 +36,9 @@
 			axios.get(route('system.logs.show', this.$route.params.id, false)).then(response => {
 				this.log = response.data.log;
 				this.content = response.data.content || this.__('The log file is empty');
-			});
+			}).catch(error => {
+				this.handleError(error);
+            });
 		}
 	};
 
