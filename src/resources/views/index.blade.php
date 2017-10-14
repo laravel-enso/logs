@@ -47,8 +47,6 @@
 							return this.itemToBeDeleted == log.name;
 						});
 
-						console.log(index);
-
 						this.logs.splice(index, 1, response.data);
 						this.itemToBeDeleted = null;
 					}).catch(error => {
