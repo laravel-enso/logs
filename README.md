@@ -22,9 +22,22 @@ Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Ens
 - can display in-page the contents of the log file, up to certain file size limit, to avoid locking up the browser
 - if the files get too large, only the download option is offered
 
+### Publishes
+
+- `php artisan vendor:publish --tag=log-assets` - the VueJS components and pages
+- `php artisan vendor:publish --tag=enso-assets` - a common alias for when wanting to update the assets,
+once a newer version is released, can be used with the `--force` flag
+
+
 ### Notes
 
 The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
+
+If at first, when installing [Enso](https://github.com/laravel-enso/Enso) , there are no logs inside the logs folder, nothing will be displayed 
+on the log management page. 
+
+Depends on: 
+ - [Structure manager](https://github.com/laravel-enso/StructureManager) for the migrations
 
 <!--h-->
 ### Contributions
