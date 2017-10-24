@@ -10,9 +10,9 @@
 
 Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
-[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_004_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/Selection_004.png)
+[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_004_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_004.png)
 
-[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/Selection_005_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/Selection_005.png)
+[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_005_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_005.png)
 
 ### Features
 
