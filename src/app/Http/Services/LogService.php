@@ -64,11 +64,11 @@ class LogService
         $size = $this->getFormattedSize(\File::size($file));
 
         return [
-            'path'         => $file,
-            'name'         => last(explode('/', $file)),
-            'size'         => $size,
-            'canBeSeen'    => $size <= self::LogSizeLimit,
-            'modified'     => Carbon::createFromTimestamp($modified),
+            'path'      => $file,
+            'name'      => last(explode('/', $file)),
+            'size'      => $size,
+            'canBeSeen' => $size <= self::LogSizeLimit,
+            'modified'  => Carbon::createFromTimestamp($modified),
         ];
     }
 
