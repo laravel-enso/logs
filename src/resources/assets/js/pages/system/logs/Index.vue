@@ -1,7 +1,9 @@
 <template>
 
     <div class="columns is-multiline">
-        <div v-for="log in logs" class="column is-one-third-widescreen is-half-desktop is-full-tablet">
+        <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
+            v-for="(log, index) in logs"
+            :key="index">
             <card icon="fa fa-terminal"
                 :removable="false"
                 :collapsible="false"
@@ -48,9 +50,9 @@
 
 <script>
 
-import Card from '../../../../components/enso/bulma/Card.vue';
-import Modal from '../../../../components/enso/bulma/Modal.vue';
 import { mapGetters } from 'vuex';
+import Card from '../../../components/enso/bulma/Card.vue';
+import Modal from '../../../components/enso/bulma/Modal.vue';
 
 export default {
     components: { Card, Modal },

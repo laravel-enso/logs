@@ -1,4 +1,4 @@
-import LogsIndex from '../../../../pages/enso/system/logs/Index.vue';
+const LogsIndex = () => import('../../../pages/system/logs/Index.vue');
 
 export default {
     name: 'system.logs.index',

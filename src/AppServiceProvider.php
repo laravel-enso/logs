@@ -4,7 +4,7 @@ namespace LaravelEnso\LogManager;
 
 use Illuminate\Support\ServiceProvider;
 
-class LogsServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
