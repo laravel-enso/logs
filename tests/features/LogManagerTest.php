@@ -52,7 +52,7 @@ class LogManagerTest extends TestCase
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertJsonStructure(['message'])
-            ->assertStatus(455);
+            ->assertStatus(555);
 
         $this->cleanUp();
     }

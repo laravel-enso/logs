@@ -3,6 +3,7 @@
 namespace LaravelEnso\LogManager\app\Http\Services;
 
 use Carbon\Carbon;
+use LaravelEnso\LogManager\app\Exceptions\LogException;
 
 class LogService
 {
@@ -20,7 +21,10 @@ class LogService
         $size = $this->getFormattedSize(\File::size($file));
 
         if ($size > self::LogSizeLimit) {
-            throw new \EnsoException(__('Log file exceeds limit of').': '.self::LogSizeLimit.' MB');
+            throw new LogException(__(
+                'Log file exceeds the limit of :limit MB',
+                ['limit' => self::LogSizeLimit]
+            ));
         }
 
         $content = \File::get($file);
