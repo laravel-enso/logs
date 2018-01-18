@@ -3,8 +3,8 @@
 namespace LaravelEnso\LogManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\LogManager\app\Handlers\Presenter;
 use LaravelEnso\LogManager\app\Handlers\Destroyer;
+use LaravelEnso\LogManager\app\Handlers\Presenter;
 use LaravelEnso\LogManager\app\Handlers\Collection;
 
 class LogController extends Controller
@@ -36,7 +36,7 @@ class LogController extends Controller
 
         return [
             'log' => $log,
-            'message' => __('The log was cleaned')
+            'message' => __('The log was cleaned'),
         ];
     }
 }
