@@ -3,27 +3,40 @@
 namespace LaravelEnso\LogManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\LogManager\app\Http\Services\LogService;
+use LaravelEnso\LogManager\app\Handlers\Presenter;
+use LaravelEnso\LogManager\app\Handlers\Destroyer;
+use LaravelEnso\LogManager\app\Handlers\Collection;
 
 class LogController extends Controller
 {
-    public function index(LogService $service)
+    public function index()
     {
-        return $service->index();
+        return ['logs' => (new Collection())->get()];
     }
 
-    public function show(string $fileName, LogService $service)
+    public function show(string $filename)
     {
-        return $service->show($fileName);
+        return ['log' => (new Presenter($filename))->get()];
     }
 
-    public function download($fileName, LogService $service)
+    public function download($filename)
     {
-        return $service->download($fileName);
+        $headers = ['Content-Type: application/log'];
+
+        return response()->download(
+            storage_path('logs/'.$filename),
+            $filename,
+            $headers
+        );
     }
 
-    public function destroy($fileName, LogService $service)
+    public function destroy($filename)
     {
-        return $service->empty($fileName);
+        $log = (new Destroyer($filename))->run();
+
+        return [
+            'log' => $log,
+            'message' => __('The log was cleaned')
+        ];
     }
 }
