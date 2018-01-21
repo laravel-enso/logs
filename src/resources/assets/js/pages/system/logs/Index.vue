@@ -4,7 +4,7 @@
         <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
             v-for="(log, index) in logs"
             :key="index">
-            <card icon="fa fa-terminal"
+            <card icon="fas fa-terminal"
                 :removable="false"
                 :collapsible="false"
                 :title="log.name"
@@ -13,20 +13,20 @@
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
                         @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
-                        <i class="fa fa-eye"></i>
+                        <i class="fas fa-eye"></i>
                     </span>
                 </a>
                 <a slot="control-1" class="card-header-icon">
                     <a class="icon is-small has-text-info"
                         :href="getDownloadLink(log.name)">
-                        <i class="fa fa-cloud-download"></i>
+                        <i class="fas fa-cloud-download-alt"></i>
                     </a>
                 </a>
                 <a slot="control-1" class="card-header-icon">
                     <popover placement="bottom"
                         @confirm="empty(log)">
                         <span class="icon is-small has-text-danger">
-                            <i class="fa fa-trash-o"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </span>
                     </popover>
                 </a>

@@ -16,7 +16,7 @@ class CreateStructureForLogManager extends StructureMigration
     ];
 
     protected $menu = [
-        'name' => 'Logs', 'icon' => 'fa fa-fw fa-terminal', 'link' => 'system.logs.index', 'has_children' => false,
+        'name' => 'Logs', 'icon' => 'fas fa-fw fa-terminal', 'link' => 'system.logs.index', 'has_children' => false,
     ];
 
     protected $parentMenu = 'System';
