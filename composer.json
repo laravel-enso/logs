@@ -22,7 +22,8 @@
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "laravel-enso/helpers": "1.7.*",
-        "laravel-enso/structuremanager": "2.1.*"
+        "laravel-enso/structuremanager": "2.1.*",
+        "laravel-enso/vuecomponents": "2.1.*"
     },
     "require-dev": {
         "laravel-enso/testhelper": "1.4.*"
