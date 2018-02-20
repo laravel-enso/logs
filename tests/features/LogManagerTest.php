@@ -65,8 +65,10 @@ class LogManagerTest extends TestCase
         $response = $this->get(route('system.logs.download', $this->log, false))
             ->assertStatus(200);
 
-        $this->assertEquals(storage_path('logs/'.$this->log),
-            $response->getFile()->getRealPath());
+        $this->assertEquals(
+            storage_path('logs/'.$this->log),
+            $response->getFile()->getRealPath()
+        );
 
         $this->cleanUp();
     }
