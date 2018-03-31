@@ -31,7 +31,7 @@
                 <div class="has-padding-large">
                     <p>
                         <span>{{ __("Last updated") }}</span>
-                        <span class="is-pulled-right">{{ log.modified.date | timeFromNow }}</span>
+                        <span class="is-pulled-right">{{ timeFromNow(log.modified.date) }}</span>
                     </p>
                     <p>
                         <span>{{ __("Size") }}</span>
@@ -47,10 +47,11 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {faTerminal, faEye, faCloudDownloadAlt, faTrashAlt,} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
+import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
 fontawesome.library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
 
@@ -85,6 +86,9 @@ export default {
         },
         getDownloadLink(log) {
             return route('system.logs.download', log);
+        },
+        timeFromNow(date) {
+            return formatDistance(date);
         },
     },
 };
