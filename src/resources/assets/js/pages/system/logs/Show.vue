@@ -38,9 +38,10 @@ export default {
     },
 
     created() {
-        axios.get(route('system.logs.show', this.$route.params.id, false)).then(({ data }) => {
-            this.log = data.log;
-        }).catch(error => this.handleError(error));
+        axios.get(route('system.logs.show', this.$route.params.id))
+            .then(({ data }) => {
+                this.log = data.log;
+            }).catch(error => this.handleError(error));
     },
 };
 
