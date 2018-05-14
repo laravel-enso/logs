@@ -1,10 +1,11 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Handlers;
+namespace LaravelEnso\LogManager\app\Classes;
 
+use Illuminate\Contracts\Support\Responsable;
 use LaravelEnso\LogManager\app\Exceptions\LogException;
 
-class Presenter extends Handler
+class Presenter extends Handler implements Responsable
 {
     private $file;
 
@@ -13,7 +14,7 @@ class Presenter extends Handler
         $this->file = storage_path('logs/'.$filename);
     }
 
-    public function get()
+    public function toResponse($request)
     {
         $log = $this->log($this->file);
 

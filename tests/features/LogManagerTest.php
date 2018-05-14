@@ -15,7 +15,8 @@ class LogManagerTest extends TestCase
     {
         parent::setUp();
 
-        // $this->disableExceptionHandling();
+        // $this->withoutExceptionHandling();
+
         $this->faker = Factory::create();
         $this->log = 'laravel.log';
         $this->signIn(User::first());
@@ -27,8 +28,7 @@ class LogManagerTest extends TestCase
         $this->addLogEntry();
 
         $this->get(route('system.logs.index', [], false))
-            ->assertStatus(200)
-            ->assertJsonStructure(['logs']);
+            ->assertStatus(200);
 
         $this->cleanUp();
     }
@@ -39,8 +39,7 @@ class LogManagerTest extends TestCase
         $this->addLogEntry();
 
         $this->get(route('system.logs.show', $this->log, false))
-            ->assertStatus(200)
-            ->assertJsonStructure(['log']);
+            ->assertStatus(200);
 
         $this->cleanUp();
     }

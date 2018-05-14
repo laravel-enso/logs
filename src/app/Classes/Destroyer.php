@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Handlers;
+namespace LaravelEnso\LogManager\app\Classes;
 
 class Destroyer extends Handler
 {

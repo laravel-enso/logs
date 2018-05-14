@@ -1,50 +1,94 @@
 <template>
 
-    <article class="message">
-        <div class="message-header"
-            v-if="log">
-            <p>{{ __("The log file") }}
-                <code>{{ log.name }}</code>
-                {{ __("was last updated") }}
-                {{ log.modified ? timeFromNow(log.modified.date) : null }}.
-                {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}
-            </p>
-            <button class="delete"
-                @click="$router.push({ name: 'system.logs.index' })"/>
+    <div class="columns is-multiline">
+        <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
+            v-for="(log, index) in logs"
+            :key="index">
+            <card :icon="icon"
+                :title="log.name"
+                :controls="3">
+                <card-control slot="control-1"
+                    v-if="log.canBeSeen"
+                    @click="$router.push({
+                        name: 'system.logs.show', params: { id: log.name }
+                    })">
+                    <span class="icon is-small has-text-success">
+                        <fa icon="eye"/>
+                    </span>
+                </card-control>
+                <card-control slot="control-2"
+                    :href="getDownloadLink(log.name)">
+                    <a class="icon is-small has-text-info">
+                        <fa icon="cloud-download-alt"/>
+                    </a>
+                </card-control>
+                <card-control slot="control-3">
+                    <popover placement="bottom"
+                        @confirm="empty(log)">
+                        <span class="icon is-small has-text-danger">
+                            <fa icon="trash-alt"/>
+                        </span>
+                    </popover>
+                </card-control>
+                <div class="has-padding-large">
+                    <p>
+                        <span>{{ __("Last updated") }}</span>
+                        <span class="is-pulled-right">{{ timeFromNow(log.modified.date) }}</span>
+                    </p>
+                    <p>
+                        <span>{{ __("Size") }}</span>
+                        <span class="is-pulled-right">{{ log.size }} {{ __("MB") }}</span>
+                    </p>
+                </div>
+            </card>
         </div>
-        <div class="message-body"
-            v-if="log">
-            <pre v-hljs>
-                <code class="php">
-{{ log.content || __('The log file is empty') }}
-                </code>
-            </pre>
-        </div>
-    </article>
+    </div>
 
 </template>
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import Card from '../../../components/enso/bulma/Card.vue';
+import CardControl from '../../../components/enso/bulma/CardControl.vue';
+import Popover from '../../../components/enso/bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
-import '../../../modules/enso/directives/hljs';
+
+fontawesome.library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
 
 export default {
+    components: { Card, CardControl, Popover },
+
     data() {
         return {
-            log: null,
-            content: null,
+            logs: [],
         };
     },
 
+    computed: {
+        icon() {
+            return faTerminal;
+        },
+    },
+
     created() {
-        axios.get(route('system.logs.show', this.$route.params.id))
-            .then(({ data }) => {
-                this.log = data.log;
-            }).catch(error => this.handleError(error));
+        axios.get(route('system.logs.index')).then(({ data }) => {
+            this.logs = data;
+        }).catch(error => this.handleError(error));
     },
 
     methods: {
+        empty(log) {
+            axios.delete(route('system.logs.destroy', log.name)).then(({ data }) => {
+                const index = this.logs.findIndex(item => log.name === item.name);
+                this.logs.splice(index, 1, data.log);
+                this.$toastr.success(data.message);
+            }).catch(error => this.handleError(error));
+        },
+        getDownloadLink(log) {
+            return route('system.logs.download', log);
+        },
         timeFromNow(date) {
             return formatDistance(date);
         },
@@ -52,5 +96,3 @@ export default {
 };
 
 </script>
-
-<style src="highlight.js/styles/atom-one-light.css"></style>
