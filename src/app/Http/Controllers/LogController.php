@@ -11,12 +11,12 @@ class LogController extends Controller
 {
     public function index()
     {
-        return new Collection();
+        return (new Collection())->get();
     }
 
     public function show(string $filename)
     {
-        return new Presenter($filename);
+        return (new Presenter($filename))->get();
     }
 
     public function download($filename)

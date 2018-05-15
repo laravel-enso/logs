@@ -2,9 +2,7 @@
 
 namespace LaravelEnso\LogManager\app\Classes;
 
-use Illuminate\Contracts\Support\Responsable;
-
-class Collection extends Handler implements Responsable
+class Collection extends Handler
 {
     private $files;
 
@@ -13,7 +11,7 @@ class Collection extends Handler implements Responsable
         $this->files = \File::files(storage_path('logs'));
     }
 
-    public function toResponse($request)
+    public function get()
     {
         return collect($this->files)
             ->filter(function ($file) {
