@@ -16,7 +16,8 @@ class LogController extends Controller
 
     public function show(string $filename)
     {
-        return (new Presenter($filename))->get();
+        return (new Presenter($filename))
+            ->get();
     }
 
     public function download($filename)
