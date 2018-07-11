@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests;
-
 use App\User;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use LaravelEnso\TestHelper\app\Traits\SignIn;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LogManagerTest extends TestCase
 {
