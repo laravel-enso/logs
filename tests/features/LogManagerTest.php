@@ -18,7 +18,9 @@ class LogManagerTest extends TestCase
 
         $this->faker = Factory::create();
         $this->log = 'laravel.log';
-        $this->signIn(User::first());
+
+        $this->seed()
+            ->signIn(User::first());
     }
 
     /** @test */
