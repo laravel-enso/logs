@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use LaravelEnso\Core\app\Models\User;
 use Faker\Factory;
 use Tests\TestCase;
 use LaravelEnso\TestHelper\app\Traits\SignIn;
