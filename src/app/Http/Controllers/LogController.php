@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\LogManager\app\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use LaravelEnso\LogManager\app\Classes\Destroyer;
 use LaravelEnso\LogManager\app\Classes\Presenter;
 use LaravelEnso\LogManager\app\Classes\Collection;
