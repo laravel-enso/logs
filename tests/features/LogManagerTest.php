@@ -66,7 +66,7 @@ class LogManagerTest extends TestCase
             ->assertStatus(200);
 
         $this->assertEquals(
-            storage_path('logs/'.$this->log),
+            storage_path('logs'.DIRECTORY_SEPARATOR.$this->log),
             $response->getFile()->getRealPath()
         );
 
