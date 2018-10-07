@@ -1,14 +1,16 @@
 <?php
 
-use LaravelEnso\Core\app\Models\User;
 use Faker\Factory;
 use Tests\TestCase;
-use LaravelEnso\TestHelper\app\Traits\SignIn;
+use LaravelEnso\Core\app\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LogManagerTest extends TestCase
 {
-    use RefreshDatabase, SignIn;
+    use RefreshDatabase;
+
+    private $faker;
+    private $log;
 
     protected function setUp()
     {
@@ -20,77 +22,82 @@ class LogManagerTest extends TestCase
         $this->log = 'laravel.log';
 
         $this->seed()
-            ->signIn(User::first());
+            ->actingAs(User::first());
+    }
+
+    public function tearDown()
+    {
+        $this->cleanUp();
+        parent::tearDown();
     }
 
     /** @test */
-    public function index()
+    public function can_access_logs_index()
     {
-        $this->addLogEntry();
+        \Log::info($this->faker->word);
 
         $this->get(route('system.logs.index', [], false))
-            ->assertStatus(200);
-
-        $this->cleanUp();
+            ->assertStatus(200)
+            ->assertJsonFragment(['name' => 'laravel.log']);
     }
 
     /** @test */
-    public function show()
+    public function can_view_log()
     {
-        $this->addLogEntry();
+        \Log::info($this->faker->word);
 
         $this->get(route('system.logs.show', $this->log, false))
-            ->assertStatus(200);
-
-        $this->cleanUp();
+            ->assertStatus(200)
+            ->assertJsonFragment(['name' => 'laravel.log']);
     }
 
     /** @test */
-    public function cant_view_if_file_exceeds_05_mb()
+    public function cant_view_if_file_exceeds_limit()
     {
         \Log::info($this->faker->words(30000));
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertJsonStructure(['message'])
             ->assertStatus(555);
-
-        $this->cleanUp();
     }
 
     /** @test */
-    public function download()
+    public function can_download_log_file()
     {
-        $this->addLogEntry();
+        \Log::info($this->faker->word);
 
         $response = $this->get(route('system.logs.download', $this->log, false))
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHeader(
+                'content-disposition',
+                'attachment; filename='.$this->log
+            );
 
         $this->assertEquals(
             storage_path('logs/'.$this->log),
             $response->getFile()->getRealPath()
         );
-
-        $this->cleanUp();
     }
 
     /** @test */
     public function empty()
     {
-        $this->addLogEntry();
+        \Log::info($this->faker->word);
 
         $this->delete(route('system.logs.destroy', $this->log, false))
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertJsonStructure(['log', 'message']);
 
-        $this->assertEquals('', \File::get(storage_path('logs/'.$this->log)));
-    }
-
-    private function addLogEntry()
-    {
-        \Log::info($this->faker->word);
+        $this->assertEquals('', \File::get($this->logPath()));
     }
 
     private function cleanUp()
     {
-        $this->delete(route('system.logs.destroy', $this->log, false));
+        \File::put($this->logPath(), '');
+    }
+
+    private function logPath()
+    {
+        return storage_path('logs').DIRECTORY_SEPARATOR.$this->log;
     }
 }
