@@ -16,8 +16,7 @@ class LogController extends Controller
 
     public function show(string $filename)
     {
-        return (new Presenter($filename))
-            ->get();
+        return (new Presenter($filename))->get();
     }
 
     public function download($filename)
@@ -25,16 +24,13 @@ class LogController extends Controller
         $headers = ['Content-Type: application/log'];
 
         return response()->download(
-            storage_path('logs/'.$filename),
-            $filename,
-            $headers
+            storage_path('logs/'.$filename), $filename, $headers
         );
     }
 
     public function destroy($filename)
     {
-        $log = (new Destroyer($filename))
-            ->run();
+        $log = (new Destroyer($filename))->run();
 
         return [
             'log' => $log,
