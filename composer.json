@@ -20,10 +20,10 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "3.4.*",
+        "laravel-enso/core": "3.5.*",
         "laravel-enso/helpers": "1.10.*",
         "laravel-enso/structuremanager": "2.5.*",
-        "laravel-enso/vuecomponents": "2.6.*"
+        "laravel-enso/vuecomponents": "2.7.*"
     },
     "autoload": {
         "psr-4": {
