@@ -12,7 +12,7 @@ class LogManagerTest extends TestCase
     private $faker;
     private $log;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -25,7 +25,7 @@ class LogManagerTest extends TestCase
             ->actingAs(User::first());
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->cleanUp();
         parent::tearDown();
