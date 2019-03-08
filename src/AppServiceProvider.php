@@ -8,8 +8,8 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/ro u tes/api.php');
-        $this->loadMigrationsFrom(__DIR__.'/da t abase/migrations');
+        $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
     public function register()
