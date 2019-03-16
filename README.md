@@ -22,7 +22,7 @@ Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Ens
 
 ### Configuration & Usage
 
-Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/packages/log-manager.html)
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/log-manager.html)
 
 ### Contributions
 
