@@ -8,15 +8,25 @@
 
 Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
+This package works exclusively within the [Enso](https://github.com/laravel-enso/Enso) ecosystem.
+
+The front end assets that utilize this api are present in the [ui](https://github.com/enso-ui/ui) package.
+
+For live examples and demos, you may visit [laravel-enso.com](https://www.laravel-enso.com)
+
 [![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_004_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_004.png)
 
 [![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_005_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_005.png)
 
-### Features
+## Installation
+
+Comes pre-installed in Enso.
+
+## Features
 
 - is a module meant for administrators which offers a streamlined interaction with the application logs
 - permits viewing, downloading and clearing the logs for the application
-- shows all the log files inside the `logs` folder
+- shows all log files inside the `logs` folder
 - can display in-page the contents of the log file, up to certain file size limit, to avoid locking up the browser
 - if the files get too large, only the download option is offered
 
