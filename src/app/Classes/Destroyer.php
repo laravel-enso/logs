@@ -11,7 +11,7 @@ class Destroyer extends Handler
         $this->file = storage_path('logs/'.$filename);
     }
 
-    public function run()
+    public function handle()
     {
         \File::put($this->file, '');
 

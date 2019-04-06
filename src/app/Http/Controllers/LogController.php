@@ -30,7 +30,7 @@ class LogController extends Controller
 
     public function destroy($filename)
     {
-        $log = (new Destroyer($filename))->run();
+        $log = (new Destroyer($filename))->handle();
 
         return [
             'log' => $log,

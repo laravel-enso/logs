@@ -28,6 +28,7 @@ class LogManagerTest extends TestCase
     public function tearDown(): void
     {
         $this->cleanUp();
+
         parent::tearDown();
     }
 

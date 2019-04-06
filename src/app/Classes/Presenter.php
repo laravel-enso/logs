@@ -17,14 +17,14 @@ class Presenter extends Handler
     {
         $log = $this->log($this->file);
 
-        $this->verifySize();
+        $this->checkSize();
 
         $log['content'] = \File::get($this->file);
 
         return $log;
     }
 
-    private function verifySize()
+    private function checkSize()
     {
         $size = $this->formattedSize(
             \File::size($this->file)
