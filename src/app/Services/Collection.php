@@ -1,6 +1,8 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Classes;
+namespace LaravelEnso\Logs\app\Services;
+
+use Illuminate\Support\Facades\File;
 
 class Collection extends Handler
 {
@@ -8,14 +10,14 @@ class Collection extends Handler
 
     public function __construct()
     {
-        $this->files = \File::files(storage_path('logs'));
+        $this->files = File::files(storage_path('logs'));
     }
 
     public function get()
     {
         return collect($this->files)
             ->filter(function ($file) {
-                return substr($file, -4) === '.log';
+                return $file->getExtension() === 'log';
             })->map(function ($file) {
                 return $this->log($file);
             });

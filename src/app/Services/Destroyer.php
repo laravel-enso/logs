@@ -1,6 +1,8 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Classes;
+namespace LaravelEnso\Logs\app\Services;
+
+use Illuminate\Support\Facades\File;
 
 class Destroyer extends Handler
 {
@@ -13,7 +15,7 @@ class Destroyer extends Handler
 
     public function handle()
     {
-        \File::put($this->file, '');
+        File::put($this->file, '');
 
         return $this->log($this->file);
     }

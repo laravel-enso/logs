@@ -5,7 +5,7 @@ use Tests\TestCase;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LogManagerTest extends TestCase
+class LogsTest extends TestCase
 {
     use RefreshDatabase;
 

@@ -1,13 +1,13 @@
 {
-    "name": "laravel-enso/logmanager",
+    "name": "laravel-enso/logs",
     "description": "Log management dependency for Laravel Enso",
     "keywords": [
         "laravel-enso",
-        "logmanager",
+        "logs",
         "log-manager",
         "laravel-logs"
     ],
-    "homepage": "https://github.com/laravel-enso/LogManager",
+    "homepage": "https://github.com/laravel-enso/logs",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -20,19 +20,19 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "4.2.*",
-        "laravel-enso/helpers": "1.10.*",
-        "laravel-enso/structuremanager": "3.0.*"
+        "laravel-enso/core": "4.3.*",
+        "laravel-enso/helpers": "1.11.*",
+        "laravel-enso/cli": "3.1.*"
     },
     "autoload": {
         "psr-4": {
-            "LaravelEnso\\LogManager\\": "src/"
+            "LaravelEnso\\Logs\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\LogManager\\AppServiceProvider"
+                "LaravelEnso\\Logs\\AppServiceProvider"
             ],
             "aliases": {}
         }

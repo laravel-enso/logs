@@ -1,10 +1,10 @@
-# Log Manager
+# Logs
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28c7bcb0b5d2451783990e0a151f0a44)](https://www.codacy.com/app/laravel-enso/LogManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/LogManager&amp;utm_campaign=Badge_Grade)
-[![StyleCI](https://styleci.io/repos/85624363/shield?branch=master)](https://styleci.io/repos/85624363)
-[![License](https://poser.pugx.org/laravel-enso/logmanager/license)](https://packagist.org/packages/laravel-enso/logmanager)
-[![Total Downloads](https://poser.pugx.org/laravel-enso/logmanager/downloads)](https://packagist.org/packages/laravel-enso/logmanager)
-[![Latest Stable Version](https://poser.pugx.org/laravel-enso/logmanager/version)](https://packagist.org/packages/laravel-enso/logmanager)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28c7bcb0b5d2451783990e0a151f0a44)](https://www.codacy.com/app/laravel-enso/logs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/logs&amp;utm_campaign=Badge_Grade)
+[![StyleCI](https://github.styleci.io/repos/85624363/shield?branch=master)](https://github.styleci.io/repos/85624363)
+[![License](https://poser.pugx.org/laravel-enso/logs/license)](https://packagist.org/packages/laravel-enso/logs)
+[![Total Downloads](https://poser.pugx.org/laravel-enso/logs/downloads)](https://packagist.org/packages/laravel-enso/logs)
+[![Latest Stable Version](https://poser.pugx.org/laravel-enso/logs/version)](https://packagist.org/packages/laravel-enso/logs)
 
 Log management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
@@ -14,9 +14,9 @@ The front end assets that utilize this api are present in the [ui](https://githu
 
 For live examples and demos, you may visit [laravel-enso.com](https://www.laravel-enso.com)
 
-[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_004_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_004.png)
+[![Screenshot](https://laravel-enso.github.io/logs/screenshots/bulma_004_thumb.png)](https://laravel-enso.github.io/logs/screenshots/bulma_004.png)
 
-[![Screenshot](https://laravel-enso.github.io/logmanager/screenshots/bulma_005_thumb.png)](https://laravel-enso.github.io/logmanager/screenshots/bulma_005.png)
+[![Screenshot](https://laravel-enso.github.io/logs/screenshots/bulma_005_thumb.png)](https://laravel-enso.github.io/logs/screenshots/bulma_005.png)
 
 ## Installation
 

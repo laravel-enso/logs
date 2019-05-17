@@ -1,8 +1,9 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Classes;
+namespace LaravelEnso\Logs\app\Services;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 
 abstract class Handler
 {
@@ -17,7 +18,7 @@ abstract class Handler
             'size' => $size,
             'visible' => $size <= self::LogSizeLimit,
             'modified' => Carbon::createFromTimestamp(
-                \File::lastModified($file)
+                File::lastModified($file)
             ),
         ];
     }

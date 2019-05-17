@@ -1,8 +1,9 @@
 <?php
 
-namespace LaravelEnso\LogManager\app\Classes;
+namespace LaravelEnso\Logs\app\Services;
 
-use LaravelEnso\LogManager\app\Exceptions\LogException;
+use Illuminate\Support\Facades\File;
+use LaravelEnso\Logs\app\Exceptions\LogException;
 
 class Presenter extends Handler
 {
@@ -19,7 +20,7 @@ class Presenter extends Handler
 
         $this->checkSize();
 
-        $log['content'] = \File::get($this->file);
+        $log['content'] = File::get($this->file);
 
         return $log;
     }
@@ -27,7 +28,7 @@ class Presenter extends Handler
     private function checkSize()
     {
         $size = $this->formattedSize(
-            \File::size($this->file)
+            File::size($this->file)
         );
 
         if ($size > self::LogSizeLimit) {

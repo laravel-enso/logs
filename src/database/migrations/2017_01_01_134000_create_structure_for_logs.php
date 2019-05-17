@@ -1,8 +1,8 @@
 <?php
 
-use LaravelEnso\StructureManager\app\Classes\StructureMigration;
+use LaravelEnso\Migrator\app\Database\Migration;
 
-class CreateStructureForLogManager extends StructureMigration
+class CreateStructureForLogs extends Migration
 {
     protected $permissions = [
         ['name' => 'system.logs.index', 'description' => 'Logs index', 'type' => 0, 'is_default' => false],

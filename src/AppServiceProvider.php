@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\LogManager;
+namespace LaravelEnso\Logs;
 
 use Illuminate\Support\ServiceProvider;
 
