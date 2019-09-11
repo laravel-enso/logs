@@ -2,6 +2,7 @@
 
 use Faker\Factory;
 use Tests\TestCase;
+use Illuminate\Support\Facades\File;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -89,12 +90,12 @@ class LogsTest extends TestCase
             ->assertStatus(200)
             ->assertJsonStructure(['log', 'message']);
 
-        $this->assertEquals('', \File::get($this->logPath()));
+        $this->assertEquals('', File::get($this->logPath()));
     }
 
     private function cleanUp()
     {
-        \File::put($this->logPath(), '');
+        File::put($this->logPath(), '');
     }
 
     private function logPath()
