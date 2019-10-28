@@ -18,21 +18,9 @@ For live examples and demos, you may visit [laravel-enso.com](https://www.larave
 
 [![Screenshot](https://laravel-enso.github.io/logs/screenshots/bulma_005_thumb.png)](https://laravel-enso.github.io/logs/screenshots/bulma_005.png)
 
-## Installation
+### Installation, Configuration & Usage
 
-Comes pre-installed in Enso.
-
-## Features
-
-- is a module meant for administrators which offers a streamlined interaction with the application logs
-- permits viewing, downloading and clearing the logs for the application
-- shows all log files inside the `logs` folder
-- can display in-page the contents of the log file, up to certain file size limit, to avoid locking up the browser
-- if the files get too large, only the download option is offered
-
-### Configuration & Usage
-
-Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/log-manager.html)
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/logs.html)
 
 ### Contributions
 
