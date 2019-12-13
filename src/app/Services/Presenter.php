@@ -3,7 +3,7 @@
 namespace LaravelEnso\Logs\app\Services;
 
 use Illuminate\Support\Facades\File;
-use LaravelEnso\Logs\app\Exceptions\LogException;
+use LaravelEnso\Logs\app\Exceptions\Log as Exception;
 
 class Presenter extends Handler
 {
@@ -32,10 +32,7 @@ class Presenter extends Handler
         );
 
         if ($size > self::LogSizeLimit) {
-            throw new LogException(__(
-                'Log file exceeds the limit of :limit MB',
-                ['limit' => self::LogSizeLimit]
-            ));
+            throw Exception::overLimit(self::LogSizeLimit);
         }
     }
 }
