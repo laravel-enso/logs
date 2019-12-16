@@ -32,7 +32,7 @@ class Presenter extends Handler
         );
 
         if ($size > self::LogSizeLimit) {
-            throw Exception::overLimit(self::LogSizeLimit);
+            throw Exception::size(self::LogSizeLimit);
         }
     }
 }
