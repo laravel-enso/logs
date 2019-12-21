@@ -16,10 +16,7 @@ class Collection extends Handler
     public function get()
     {
         return collect($this->files)
-            ->filter(function ($file) {
-                return $file->getExtension() === 'log';
-            })->map(function ($file) {
-                return $this->log($file);
-            });
+            ->filter(fn($file) => $file->getExtension() === 'log')
+            ->map(fn($file) => $this->log($file));
     }
 }
