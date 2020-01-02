@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::middleware(['web', 'auth', 'core'])
-    ->namespace('LaravelEnso\Logs\app\Http\Controllers')
+    ->namespace('LaravelEnso\Logs\App\Http\Controllers')
     ->prefix('api/system/logs')
     ->as('system.logs.')
     ->group(function () {

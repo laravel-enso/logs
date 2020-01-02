@@ -1,30 +1,30 @@
 <?php
 
-namespace LaravelEnso\Logs\app\Services;
+namespace LaravelEnso\Logs\App\Services;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use LaravelEnso\Helpers\App\Classes\Decimals;
 
 abstract class Handler
 {
-    protected const LogSizeLimit = 0.5;
+    public const LogSizeLimit = 0.5;
 
-    protected function log($file)
+    protected function log($file): array
     {
-        $size = $this->formattedSize(\File::size($file));
+        $size = $this->formattedSize(File::size($file));
 
         return [
-            'name' => collect(explode(DIRECTORY_SEPARATOR, $file))->last(),
+            'name' => (new Collection(explode(DIRECTORY_SEPARATOR, $file)))->last(),
             'size' => $size,
             'visible' => $size <= self::LogSizeLimit,
-            'modified' => Carbon::createFromTimestamp(
-                File::lastModified($file)
-            ),
+            'modified' => Carbon::createFromTimestamp(File::lastModified($file)),
         ];
     }
 
-    protected function formattedSize($size)
+    protected function formattedSize($size): float
     {
-        return round($size / 1048576, 3);
+        return Decimals::div($size, 1024 * 1024, 3);
     }
 }

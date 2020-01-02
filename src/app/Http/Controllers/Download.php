@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Logs\app\Http\Controllers;
+namespace LaravelEnso\Logs\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -11,7 +11,7 @@ class Download extends Controller
         $headers = ['Content-Type: application/log'];
 
         return response()->download(
-            storage_path('logs/'.$filename), $filename, $headers
+            storage_path("logs/{$filename}"), $filename, $headers
         );
     }
 }

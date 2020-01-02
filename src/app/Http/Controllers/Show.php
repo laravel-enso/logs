@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Logs\app\Http\Controllers;
+namespace LaravelEnso\Logs\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Logs\app\Services\Presenter;
+use LaravelEnso\Logs\App\Services\Presenter;
 
 class Show extends Controller
 {

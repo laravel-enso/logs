@@ -1,15 +1,15 @@
 <?php
 
-namespace LaravelEnso\Logs\app\Http\Controllers;
+namespace LaravelEnso\Logs\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Logs\app\Services\Destroyer;
+use LaravelEnso\Logs\App\Services\ClearLog;
 
 class Destroy extends Controller
 {
     public function __invoke($filename)
     {
-        $log = (new Destroyer($filename))->handle();
+        $log = (new ClearLog($filename))->handle();
 
         return [
             'log' => $log,
