@@ -1,10 +1,11 @@
 <?php
 
 use Faker\Factory;
-use Tests\TestCase;
-use Illuminate\Support\Facades\File;
-use LaravelEnso\Core\App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use LaravelEnso\Core\App\Models\User;
+use Tests\TestCase;
 
 class LogsTest extends TestCase
 {
@@ -36,7 +37,7 @@ class LogsTest extends TestCase
     /** @test */
     public function can_access_logs_index()
     {
-        \Log::info($this->faker->word);
+        Log::info($this->faker->word);
 
         $this->get(route('system.logs.index', [], false))
             ->assertStatus(200)
@@ -46,7 +47,7 @@ class LogsTest extends TestCase
     /** @test */
     public function can_view_log()
     {
-        \Log::info($this->faker->word);
+        Log::info($this->faker->word);
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertStatus(200)
@@ -56,7 +57,7 @@ class LogsTest extends TestCase
     /** @test */
     public function cant_view_if_file_exceeds_limit()
     {
-        \Log::info($this->faker->words(30000));
+        Log::info($this->faker->words(30000));
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertJsonStructure(['message'])
@@ -66,7 +67,7 @@ class LogsTest extends TestCase
     /** @test */
     public function can_download_log_file()
     {
-        \Log::info($this->faker->word);
+        Log::info($this->faker->word);
 
         $response = $this->get(route('system.logs.download', $this->log, false))
             ->assertStatus(200)
@@ -84,7 +85,7 @@ class LogsTest extends TestCase
     /** @test */
     public function empty()
     {
-        \Log::info($this->faker->word);
+        Log::info($this->faker->word);
 
         $this->delete(route('system.logs.destroy', $this->log, false))
             ->assertStatus(200)
