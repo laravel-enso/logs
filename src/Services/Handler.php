@@ -5,7 +5,7 @@ namespace LaravelEnso\Logs\App\Services;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use LaravelEnso\Helpers\App\Classes\Decimals;
+use LaravelEnso\Helpers\App\Services\Decimals;
 
 abstract class Handler
 {
