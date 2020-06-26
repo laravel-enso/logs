@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['api', 'auth', 'core'])
-    ->namespace('LaravelEnso\Logs\App\Http\Controllers')
+    ->namespace('LaravelEnso\Logs\Http\Controllers')
     ->prefix('api/system/logs')
     ->as('system.logs.')
     ->group(function () {

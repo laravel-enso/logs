@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Logs\App\Exceptions;
+namespace LaravelEnso\Logs\Exceptions;
 
-use LaravelEnso\Helpers\App\Exceptions\EnsoException;
-use LaravelEnso\Logs\App\Services\Presenter;
+use LaravelEnso\Helpers\Exceptions\EnsoException;
+use LaravelEnso\Logs\Services\Presenter;
 
 class Log extends EnsoException
 {

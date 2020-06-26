@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Logs\App\Services;
+namespace LaravelEnso\Logs\Services;
 
 use Illuminate\Support\Facades\File;
 

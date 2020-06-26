@@ -1,6 +1,6 @@
 <?php
 
-use LaravelEnso\Migrator\App\Database\Migration;
+use LaravelEnso\Migrator\Database\Migration;
 
 class CreateStructureForLogs extends Migration
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Logs\App\Services;
+namespace LaravelEnso\Logs\Services;
 
 use Illuminate\Support\Facades\File;
-use LaravelEnso\Logs\App\Exceptions\Log;
+use LaravelEnso\Logs\Exceptions\Log;
 
 class Presenter extends Handler
 {

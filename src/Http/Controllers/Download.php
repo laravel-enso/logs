@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Logs\App\Http\Controllers;
+namespace LaravelEnso\Logs\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
