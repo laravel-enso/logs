@@ -61,7 +61,7 @@ class LogsTest extends TestCase
 
         $this->get(route('system.logs.show', $this->log, false))
             ->assertJsonStructure(['message'])
-            ->assertStatus(555);
+            ->assertStatus(488);
     }
 
     /** @test */
