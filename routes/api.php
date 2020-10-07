@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LaravelEnso\Logs\Http\Controllers\Index;
 use LaravelEnso\Logs\Http\Controllers\Destroy;
 use LaravelEnso\Logs\Http\Controllers\Download;
+use LaravelEnso\Logs\Http\Controllers\Index;
 use LaravelEnso\Logs\Http\Controllers\Show;
 
 Route::middleware(['api', 'auth', 'core'])
