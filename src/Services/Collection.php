@@ -18,6 +18,7 @@ class Collection extends Handler
     {
         return (new Collect($this->files))
             ->filter(fn ($file) => $file->getExtension() === 'log')
-            ->map(fn ($file) => $this->log($file));
+            ->map(fn ($file) => $this->log($file))
+            ->values();
     }
 }
