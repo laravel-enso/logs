@@ -9,6 +9,6 @@ class Index extends Controller
 {
     public function __invoke()
     {
-        return (new Collection())->get()->values();
+        return (new Collection())->get();
     }
 }
