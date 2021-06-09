@@ -16,7 +16,7 @@ abstract class Handler
         $size = $this->formattedSize(File::size($file));
 
         return [
-            'name' => (new Collection(explode(DIRECTORY_SEPARATOR, $file)))->last(),
+            'name' => Collection::wrap(explode(DIRECTORY_SEPARATOR, $file))->last(),
             'size' => $size,
             'visible' => $size <= self::LogSizeLimit,
             'modified' => Carbon::createFromTimestamp(File::lastModified($file)),
