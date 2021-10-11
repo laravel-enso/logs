@@ -18,7 +18,7 @@ abstract class Handler
         return [
             'name' => Collection::wrap(explode(DIRECTORY_SEPARATOR, $file))->last(),
             'size' => $size,
-            'visible' => $size <= self::LogSizeLimit,
+            'visible' => $size <= self::LogSizeLimit && $file->getExtension() === 'log',
             'modified' => Carbon::createFromTimestamp(File::lastModified($file)),
         ];
     }
