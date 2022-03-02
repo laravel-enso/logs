@@ -2,7 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-class CreateStructureForLogs extends Migration
+return new class extends Migration
 {
     protected array $permissions = [
         ['name' => 'system.logs.index', 'description' => 'Logs index', 'is_default' => false],
@@ -16,4 +16,4 @@ class CreateStructureForLogs extends Migration
     ];
 
     protected ?string $parentMenu = 'System';
-}
+};
