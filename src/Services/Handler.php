@@ -12,6 +12,8 @@ abstract class Handler
 
     protected function log($file): array
     {
+        clearstatcache(true, $file);
+
         $size = $this->formattedSize(File::size($file));
         $name = File::name($file);
         $extension = File::extension($file);
