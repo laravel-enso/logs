@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use LaravelEnso\Users\Models\User;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class LogsTest extends TestCase
 {
@@ -32,7 +33,7 @@ class LogsTest extends TestCase
         parent::tearDown();
     }
 
-    /** @test */
+    #[Test]
     public function can_access_logs_index()
     {
         Log::info($this->faker->word);
@@ -42,7 +43,7 @@ class LogsTest extends TestCase
             ->assertJsonFragment(['name' => 'laravel.log']);
     }
 
-    /** @test */
+    #[Test]
     public function can_view_log()
     {
         Log::info($this->faker->word);
@@ -52,7 +53,7 @@ class LogsTest extends TestCase
             ->assertJsonFragment(['name' => 'laravel.log']);
     }
 
-    /** @test */
+    #[Test]
     public function cant_view_if_file_exceeds_limit()
     {
         Log::info($this->faker->words(30000));
@@ -62,7 +63,7 @@ class LogsTest extends TestCase
             ->assertStatus(488);
     }
 
-    /** @test */
+    #[Test]
     public function can_download_log_file()
     {
         Log::info($this->faker->word);
@@ -80,7 +81,7 @@ class LogsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function empty()
     {
         Log::info($this->faker->word);
