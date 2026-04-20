@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/logs",
-    "description": "Log management dependency for Laravel Enso",
+    "description": "Application log management for Laravel Enso",
     "keywords": [
         "laravel-enso",
         "logs",
