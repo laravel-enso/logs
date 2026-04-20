@@ -57,6 +57,10 @@ Required Enso packages:
 - [`laravel-enso/helpers`](https://docs.laravel-enso.com/backend/helpers.html) [↗](https://github.com/laravel-enso/helpers)
 - [`laravel-enso/migrator`](https://docs.laravel-enso.com/backend/migrator.html) [↗](https://github.com/laravel-enso/migrator)
 
+Companion frontend package:
+
+- [`@enso-ui/logs`](https://docs.laravel-enso.com/frontend/logs.html) [↗](https://github.com/enso-ui/logs)
+
 ## Contributions
 
 are welcome. Pull requests are great, but issues are good too.
