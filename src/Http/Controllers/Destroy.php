@@ -12,7 +12,7 @@ class Destroy extends Controller
         $log = (new ClearLog($filename))->handle();
 
         return [
-            'log' => $log,
+            'log'     => $log,
             'message' => __('The log was cleaned'),
         ];
     }

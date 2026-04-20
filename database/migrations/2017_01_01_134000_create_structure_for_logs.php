@@ -2,8 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-return new class extends Migration
-{
+return new class() extends Migration {
     protected array $permissions = [
         ['name' => 'system.logs.index', 'description' => 'Logs index', 'is_default' => false],
         ['name' => 'system.logs.show', 'description' => 'Show log', 'is_default' => false],

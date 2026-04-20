@@ -11,7 +11,9 @@ class Download extends Controller
         $headers = ['Content-Type: application/log'];
 
         return response()->download(
-            storage_path("logs/{$filename}"), $filename, $headers
+            storage_path("logs/{$filename}"),
+            $filename,
+            $headers
         );
     }
 }

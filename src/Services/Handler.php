@@ -19,9 +19,9 @@ abstract class Handler
         $extension = File::extension($file);
 
         return [
-            'name' => "{$name}.{$extension}",
-            'size' => $size,
-            'visible' => $size <= self::LogSizeLimit && $extension === 'log',
+            'name'     => "{$name}.{$extension}",
+            'size'     => $size,
+            'visible'  => $size <= self::LogSizeLimit && $extension === 'log',
             'modified' => Carbon::createFromTimestamp(File::lastModified($file)),
         ];
     }
