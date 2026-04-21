@@ -104,7 +104,7 @@ class LogsTest extends TestCase
         $this->get(route('system.logs.show', $this->log, false))
             ->assertStatus(200)
             ->assertJsonFragment([
-                'name' => 'laravel.log',
+                'name'    => 'laravel.log',
                 'content' => '',
             ]);
     }
