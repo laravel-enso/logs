@@ -93,6 +93,36 @@ class LogsTest extends TestCase
         $this->assertEquals('', File::get($this->logPath()));
     }
 
+    #[Test]
+    public function can_view_empty_log_after_cleaning_it()
+    {
+        Log::info($this->faker->word);
+
+        $this->delete(route('system.logs.destroy', $this->log, false))
+            ->assertStatus(200);
+
+        $this->get(route('system.logs.show', $this->log, false))
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                'name' => 'laravel.log',
+                'content' => '',
+            ]);
+    }
+
+    #[Test]
+    public function destroy_returns_log_metadata_for_cleared_file()
+    {
+        Log::info($this->faker->word);
+
+        $response = $this->delete(route('system.logs.destroy', $this->log, false))
+            ->assertStatus(200)
+            ->assertJsonStructure(['log', 'message']);
+
+        $this->assertSame('laravel.log', $response->json('log.name'));
+        $this->assertSame(0, $response->json('log.size'));
+        $this->assertTrue($response->json('log.visible'));
+    }
+
     private function cleanUp()
     {
         File::put($this->logPath(), '');
