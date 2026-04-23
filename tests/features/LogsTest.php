@@ -96,6 +96,7 @@ class LogsTest extends TestCase
         $this->assertEquals('', File::get($this->logPath()));
     }
 
+    #[Test]
     public function can_view_empty_log_after_cleaning_it()
     {
         $this->writeLog();
